@@ -1,2 +1,0 @@
-# WeatherBoard
-Weather Application

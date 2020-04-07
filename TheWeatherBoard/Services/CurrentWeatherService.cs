@@ -37,8 +37,8 @@ namespace TheWeatherBoard.Services
 
 
             var request = WebRequest.Create(client.BaseAddress + url);
-           
 
+           
             var responseStream = request.GetResponse().GetResponseStream();
             if (responseStream != null)
             {

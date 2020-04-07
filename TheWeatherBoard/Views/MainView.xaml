@@ -11,27 +11,31 @@
         <vm:MainViewModel/>
     </Window.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="350"/>
-            <RowDefinition Height="180"/>
-            <RowDefinition Height="180"/>
-            <RowDefinition Height="10"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox Text="{Binding Location}" Width="200" Height="50" />
-            <Button Content="Show Weather" Command="{Binding ShowWeatherCommand}" Width="200" Height="50"/>
+
+        <StackPanel Orientation="Horizontal" Width="600" Height="100" Margin="97,63,97,758">
+            <TextBox Text="{Binding Location}" />
+            <Button Content="Show Weather" Command="{Binding ShowWeatherCommand}" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Image Width="300"></Image>
+
+
+
+
+
+        <StackPanel Width="600" Height="300" Orientation="Horizontal" >
             <StackPanel Width="300">
-                <Label Content="{Binding Description}" Width="200" Height="50" Background="White" />
-                <Label Content="{Binding TemperatureOutput}" Width="200" Height="50" Background="White"/>
+                <Image/>
+                <Label Content="{Binding Temperature}"/>
+                <Label Content="{Binding Description}" />
             </StackPanel>
-            
+            <StackPanel Width="300">
+                <Label Content="{Binding City}"/>
+                <Label Content="{Binding TempMax}" />
+                <Label Content="{Binding TempMin}"/>
+                <Label Content="{Binding WindSpeed}" />
+                <Label Content="{Binding TempFeelsLike}"/>
+                <Label Content="{Binding Sunrise}"/>
+                <Label Content="{Binding Sunset}"/>
+            </StackPanel>
         </StackPanel>
-        
-        
-        
     </Grid>
 </Window>

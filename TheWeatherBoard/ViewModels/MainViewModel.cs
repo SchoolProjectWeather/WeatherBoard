@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
 using TheWeatherBoard.Bases;
+using TheWeatherBoard.Helper;
 using TheWeatherBoard.Models;
 using TheWeatherBoard.Services;
 
@@ -12,6 +15,8 @@ namespace TheWeatherBoard.ViewModels
   public class MainViewModel: ViewModelBase
     {
         CurrentWeatherService currentWeatherService = new CurrentWeatherService();
+        CalcuteConverter calcuteConverter = new CalcuteConverter();
+        IconPick iconPick = new IconPick();
         public ButtonCommandBase ShowWeatherCommand { get; private set; }
         public MainViewModel()
         {
@@ -29,10 +34,23 @@ namespace TheWeatherBoard.ViewModels
             TempMin ="Min Temperature: "+ model.main.temp_min + " C°";
             TempMax = "Max Temperature: " + model.main.temp_max + " C°";
             WindSpeed = "Wind Speed: " + model.wind.speed + "m/s";
-            City = "City: " + model.name;
-            Sunset = Convert.ToString( model.sys.sunset);
-            Sunrise = Convert.ToString( model.sys.sunrise);
+            City = model.name;
+            Sunrise =calcuteConverter.UnixTimeStampConverter(model.sys.sunrise);
+            Sunset = calcuteConverter.UnixTimeStampConverter(model.sys.sunset);
+            WeatherIcon= iconPick.pickIcon(model.weather[0].icon);
 
+        }
+
+
+        private string _weatherIcon;
+        public string WeatherIcon
+        {
+            get { return _weatherIcon; }
+            set
+            {
+                _weatherIcon = value;
+                OnPropertyChanged();
+            }
         }
 
         private string _location;

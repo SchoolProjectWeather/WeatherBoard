@@ -4,7 +4,7 @@
 
 
     <!--BaseButtonStyle-->
-    <Style TargetType="Button">
+    <!--<Style TargetType="Button">
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontFamily" Value="CorpoS"/>
         <Setter Property="FontSize" Value="14"/>
@@ -19,7 +19,7 @@
             </Trigger>
         </Style.Triggers>
 
-    </Style>
+    </Style>-->
 
    
 

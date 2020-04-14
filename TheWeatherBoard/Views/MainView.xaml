@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheWeatherBoard"
         xmlns:vm="clr-namespace:TheWeatherBoard.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="The WeatherBoard" Height="950" Width="800">
     <Window.DataContext>
@@ -12,23 +13,25 @@
     </Window.DataContext>
     <Grid>
 
-        <StackPanel Orientation="Horizontal" Width="600" Height="100" Margin="97,63,97,758">
-            <TextBox Text="{Binding Location}" />
-            <Button Content="Show Weather" Command="{Binding ShowWeatherCommand}" />
+        <StackPanel Orientation="Horizontal" Height="100" Margin="97,63,61,758">
+            <TextBox Text="{Binding Location}" Margin="0,25" Width="480"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="City" />
+
+            <Button Content="Show Weather" Command="{Binding ShowWeatherCommand}" Margin="0,34" Width="142" />
         </StackPanel>
 
 
 
 
 
-        <StackPanel Width="600" Height="300" Orientation="Horizontal" >
+        <StackPanel Width="600" Height="300" Orientation="Horizontal" Margin="97,214,97,407" >
             <StackPanel Width="300">
-                <Image/>
-                <Label Content="{Binding Temperature}"/>
-                <Label Content="{Binding Description}" />
+                <Label Content="{Binding City}" Style="{StaticResource CityLabel}"/>
+                <Image Width="150" Height="150" Source="{Binding WeatherIcon}"/>
+                <Label Content="{Binding Temperature}" Style="{StaticResource TemperatureLabel}" Width="Auto"/>
+                <Label Content="{Binding Description}" Style="{StaticResource TemperatureLabel}"  Width="Auto" />
             </StackPanel>
             <StackPanel Width="300">
-                <Label Content="{Binding City}"/>
+
                 <Label Content="{Binding TempMax}" />
                 <Label Content="{Binding TempMin}"/>
                 <Label Content="{Binding WindSpeed}" />

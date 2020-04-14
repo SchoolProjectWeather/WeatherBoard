@@ -2,11 +2,29 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:TheWeatherBoard.StyleDictionaries">
 
-    <Style TargetType="Label">
+    <!--<Style TargetType="Label">
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Width" Value="400"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="{StaticResource White}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
+
+    <Style TargetType="Label" x:Key="TemperatureLabel">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource White}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="50"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="CityLabel">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource White}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="50"/>
+    </Style>-->
 </ResourceDictionary>

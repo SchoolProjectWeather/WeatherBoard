@@ -40,6 +40,8 @@ namespace TheWeatherBoard.Services
 
            
             var responseStream = request.GetResponse().GetResponseStream();
+
+            
             if (responseStream != null)
             {
                 using (var streamReader = new StreamReader(responseStream))

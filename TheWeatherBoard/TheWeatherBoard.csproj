@@ -154,16 +154,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\durchwachsen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\bewoelkt.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\logo2.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Flaticonmaker-Flat-Style-Cloud.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\01d.png" />
+    <Resource Include="Assets\02d.png" />
+    <Resource Include="Assets\03d.png" />
+    <Resource Include="Assets\04d.png" />
+    <Resource Include="Assets\09d.png" />
+    <Resource Include="Assets\10d.png" />
+    <Resource Include="Assets\11d.png" />
+    <Resource Include="Assets\13d.png" />
+    <Resource Include="Assets\50d.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets')" />

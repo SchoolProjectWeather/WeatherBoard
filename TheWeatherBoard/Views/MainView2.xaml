@@ -27,7 +27,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Width="170" Height="200">
                             <Label Content="{Binding City}" FontSize="18" Style="{StaticResource MaterialDesignLabel}"/>
-                            <Image Width="100" Height="100" Source="{Binding WeatherIcon}"/>
+                            <Image Width="100" Height="100" Source="{Binding WeatherIcon}" HorizontalAlignment="Left"/>
                             <Label Content="{Binding Temperature}" FontSize="18" Style="{StaticResource MaterialDesignLabel}"/>
                         </StackPanel>
                         <StackPanel Width="170" Height="200">

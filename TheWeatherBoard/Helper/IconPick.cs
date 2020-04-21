@@ -22,34 +22,66 @@ namespace TheWeatherBoard.Helper
             switch (caseSwtich)
             {
                 case "01d":
-
-                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\bewoelkt.png";
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\01d.png";
                     break;
-                    
-                case "02n":
-                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\bewoelkt.png";
+                case "02d":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\02d.png";
                     break;
                 case "03d":
-                    //source
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\03d.png";
                     break;
                 case "04d":
-                    //source
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\04d.png";
                     break;
                 case "09d":
-                    //source
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\09d.png";
                     break;
                 case "10d":
-                    //source
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\10d.png";
                     break;
                 case "11d":
-                    //source
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\11d.png";
                     break;
                 case "13d":
-                    //source
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\13d.png";
                     break;
                 case "50d":
-                    //source
-                    break; ;
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\50d.png";
+                    break;
+
+
+
+                case "01n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\01d.png";
+                    break;
+                case "02n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\02d.png";
+                    break;
+                case "03n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\03d.png";
+                    break;
+                case "04n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\04d.png";
+                    break;
+                case "09n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\09d.png";
+                    break;
+                case "10n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\10d.png";
+                    break;
+                case "11n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\11d.png";
+                    break;
+                case "13n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\13d.png";
+                    break;
+                case "50n":
+                    iconSource = "C:\\Repos\\WEATHERBOARD\\WeatherBoard\\TheWeatherBoard\\Assets\\50d.png";
+                    break;
+
+
+
+                    ;
             }
 
             return iconSource;

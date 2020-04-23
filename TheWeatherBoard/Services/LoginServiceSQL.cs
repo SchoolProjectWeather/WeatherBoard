@@ -13,9 +13,9 @@ namespace TheWeatherBoard.Services
 {
   public class LoginServiceSQL
     {
-		public void BuildSqlConnection(string username, string password, bool windowmagic)
+		public void BuildSqlConnection(string username, string password)
 		{
-			windowmagic = false;
+			
 			string connectionString = @"Server=127.0.0.1,3306;Database=Login;User Id=root;Password=root;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -38,9 +38,12 @@ namespace TheWeatherBoard.Services
 				{
 					MainView2 mainView = new MainView2();
 					mainView.Show();
-					//this.LoginScreen.Close();
 
-
+					var loginScreen = (Application.Current.MainWindow as LoginScreen);
+					if (loginScreen != null)
+					{
+						loginScreen.Close();
+					}
 				}
 				else
 				{
@@ -56,7 +59,7 @@ namespace TheWeatherBoard.Services
 			finally
 			{
 				connection.Close();
-				windowmagic = true;
+		
 			}
 		}
 	}

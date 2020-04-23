@@ -16,11 +16,13 @@ namespace TheWeatherBoard.Services
     {
         private const string APP_ID = "df1b80f131e96328741e25b186b378ba";
         private HttpClient client;
+        public CurrentWeatherModel model;
 
         public CurrentWeatherService()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri("http://api.openweathermap.org/data/2.5/");
+            
         }
    
 
@@ -47,7 +49,8 @@ namespace TheWeatherBoard.Services
                 {
                     while (streamReader.Peek() > -1)
                     {
-                        var model = new Models.CurrentWeatherModel();
+                        model = new CurrentWeatherModel();
+                        //var model = new Models.CurrentWeatherModel();
                         model = JsonConvert.DeserializeObject<CurrentWeatherModel>(streamReader.ReadLine());
                         return model;
 

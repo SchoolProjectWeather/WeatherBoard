@@ -11,18 +11,22 @@ namespace TheWeatherBoard.Bases
     {
        
             private Action _execute;
+           
 
-            public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged;
 
             public ButtonCommandBase(Action execute)
             {
                 _execute = execute;
             }
 
+      
 
-            public void Execute(object parameter)
+        public void Execute(object parameter)
             {
                 _execute.Invoke();
+               
+            
             }
 
             public bool CanExecute(object parameter)

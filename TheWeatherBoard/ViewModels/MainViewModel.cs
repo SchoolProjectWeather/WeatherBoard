@@ -14,12 +14,17 @@ namespace TheWeatherBoard.ViewModels
 {
   public class MainViewModel: ViewModelBase
     {
-        CurrentWeatherService currentWeatherService = new CurrentWeatherService();
-        CalcuteConverter calcuteConverter = new CalcuteConverter();
-        IconPick iconPick = new IconPick();
+
+        public CalcuteConverter calcuteConverter;
+        public CurrentWeatherService currentWeatherService;
+        public IconPick iconPick;
         public ButtonCommandBase ShowWeatherCommand { get; private set; }
+
         public MainViewModel()
-        {
+        {  
+            iconPick = new IconPick();
+            calcuteConverter = new CalcuteConverter();
+            currentWeatherService = new CurrentWeatherService();
             ShowWeatherCommand = new ButtonCommandBase(ShowWeather);
         }
 

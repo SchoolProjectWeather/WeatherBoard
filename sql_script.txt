@@ -5,71 +5,38 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema weather_display_db
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema weather_display_db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `weather_display_db` DEFAULT CHARACTER SET utf8 ;
+USE `weather_display_db` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`users`
+-- Table `weather_display_db`.`city`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`users` (
-  `user_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `aftername` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`user_id`))
+CREATE TABLE IF NOT EXISTS `weather_display_db`.`city` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`city`
+-- Table `weather_display_db`.`person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`city` (
-  `city_id` INT NOT NULL AUTO_INCREMENT,
-  `city_name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`city_id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`users_location`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`users_location` (
-  `location_id` INT NOT NULL AUTO_INCREMENT,
-  `location_city_id` INT NULL,
-  `city_city_id` INT NOT NULL,
-  PRIMARY KEY (`location_id`),
-  INDEX `fk_users_location_city1_idx` (`city_city_id` ASC) ,
-  CONSTRAINT `fk_users_location_city1`
-    FOREIGN KEY (`city_city_id`)
-    REFERENCES `mydb`.`city` (`city_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`location_has_users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`location_has_users` (
-  `location_location_id` INT NOT NULL,
-  `users_user_id` INT NOT NULL,
-  PRIMARY KEY (`location_location_id`, `users_user_id`),
-  INDEX `fk_location_has_users_users1_idx` (`users_user_id` ASC) ,
-  INDEX `fk_location_has_users_location_idx` (`location_location_id` ASC) ,
-  CONSTRAINT `fk_location_has_users_location`
-    FOREIGN KEY (`location_location_id`)
-    REFERENCES `mydb`.`users_location` (`location_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_location_has_users_users1`
-    FOREIGN KEY (`users_user_id`)
-    REFERENCES `mydb`.`users` (`user_id`)
+CREATE TABLE IF NOT EXISTS `weather_display_db`.`person` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `city_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `city_id`),
+  INDEX `fk_person_city_idx` (`city_id` ASC) ,
+  CONSTRAINT `fk_person_city`
+    FOREIGN KEY (`city_id`)
+    REFERENCES `weather_display_db`.`city` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -24,11 +24,11 @@
                     </StackPanel>
                 </Border>
                 <Border Background="White" Margin="10 20" CornerRadius="5">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <StackPanel Width="170" Height="200">
-                            <Label Content="{Binding City}" FontSize="18" Style="{StaticResource MaterialDesignLabel}"/>
-                            <Image Width="100" Height="100" Source="{Binding WeatherIcon}" HorizontalAlignment="Left"/>
-                            <Label Content="{Binding Temperature}" FontSize="18" Style="{StaticResource MaterialDesignLabel}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <StackPanel Width="208" Height="200">
+                            <Label Content="{Binding City}" FontSize="18" HorizontalContentAlignment="Center" FontWeight="DemiBold" Style="{StaticResource MaterialDesignLabel}"/>
+                            <Image Width="100" Height="100" Source="{Binding WeatherIcon}" HorizontalAlignment="Center"/>
+                            <Label Content="{Binding Temperature}" FontWeight="DemiBold"  HorizontalContentAlignment="Center" FontSize="18" Style="{StaticResource MaterialDesignLabel}"/>
                         </StackPanel>
                         <StackPanel Width="170" Height="200">
                             <Label Content="{Binding Description}" Style="{StaticResource MaterialDesignLabel}"/>

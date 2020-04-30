@@ -17,6 +17,7 @@ namespace TheWeatherBoard.ViewModels
 
         public CalcuteConverter calcuteConverter;
         public CurrentWeatherService currentWeatherService;
+        public WeatherForecastService forecastService;
         public IconPick iconPick;
         public ButtonCommandBase ShowWeatherCommand { get; private set; }
 
@@ -40,9 +41,16 @@ namespace TheWeatherBoard.ViewModels
             TempMax = "Max Temperature: " + model.main.temp_max + " C°";
             WindSpeed = "Wind Speed: " + model.wind.speed + "m/s";
             City = model.name;
-            Sunrise =calcuteConverter.UnixTimeStampConverter(model.sys.sunrise);
-            Sunset = calcuteConverter.UnixTimeStampConverter(model.sys.sunset);
+            Sunrise = "sunrise: "+ calcuteConverter.UnixTimeStampConverter(model.sys.sunrise);
+            Sunset = "sunset: "+ calcuteConverter.UnixTimeStampConverter(model.sys.sunset);
             WeatherIcon= iconPick.pickIcon(model.weather[0].icon);
+
+            //WeatherForecastModel modelForecast = new WeatherForecastModel();
+            //modelForecast = forecastService.GetForecasttWeather(Location);
+            //City = modelForecast.City.Name;
+
+           // Description = modelForecast.List[0].Weather.;
+            
 
         }
 

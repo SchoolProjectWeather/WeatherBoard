@@ -22,7 +22,7 @@ namespace TheWeatherBoard.Views
 	/// </summary>
 	public partial class LoginScreen : Window
 	{
-		public bool magic;
+		
 		public LoginScreen()
 		{
 			InitializeComponent();

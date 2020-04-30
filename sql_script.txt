@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema weather_display_db
+-- Schema Login
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema weather_display_db
+-- Schema Login
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `weather_display_db` DEFAULT CHARACTER SET utf8 ;
-USE `weather_display_db` ;
+CREATE SCHEMA IF NOT EXISTS `Login` DEFAULT CHARACTER SET utf8 ;
+USE `Login` ;
 
 -- -----------------------------------------------------
--- Table `weather_display_db`.`city`
+-- Table `Login`.`city`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `weather_display_db`.`city` (
+CREATE TABLE IF NOT EXISTS `Login`.`city` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -25,18 +25,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `weather_display_db`.`person`
+-- Table `Login`.`person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `weather_display_db`.`person` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+CREATE TABLE IF NOT EXISTS `Login`.`person` (
+  `idUser` INT NOT NULL AUTO_INCREMENT,
+  `userName` VARCHAR(45) NULL,
+  `Password` VARCHAR(45) NULL,
   `city_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `city_id`),
+  PRIMARY KEY (`idUser`, `city_id`),
   INDEX `fk_person_city_idx` (`city_id` ASC) ,
   CONSTRAINT `fk_person_city`
     FOREIGN KEY (`city_id`)
-    REFERENCES `weather_display_db`.`city` (`id`)
+    REFERENCES `Login`.`city` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -45,3 +45,7 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `login`.`city` (`name`) VALUES ('stuttgart');
+
+INSERT INTO `login`.`person` (`userName`, `Password`, `city_id`) VALUES ('Berg', '123', '1');

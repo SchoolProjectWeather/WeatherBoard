@@ -30,6 +30,11 @@ namespace TheWeatherBoard.ViewModels
                     _loginCommand = new RelayCommand<object>(i => Login(i));
                 return _loginCommand;
             }
+            set
+            {
+
+              
+            }
         }
 
 
@@ -40,10 +45,10 @@ namespace TheWeatherBoard.ViewModels
             PasswordBox pwBox = obj as PasswordBox;
 
             loginService.BuildSqlConnection(Name, pwBox.Password);
-            
-           
 
-           
+ 
+
+
         }
 
 
@@ -53,6 +58,10 @@ namespace TheWeatherBoard.ViewModels
             get { return _name; }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Name should not be empty!");
+                }
                 _name = value;
                 OnPropertyChanged();
             }

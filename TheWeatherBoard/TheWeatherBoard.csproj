@@ -111,9 +111,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\WeatherForecastModel.cs" />
+    <Compile Include="Models\ForecastModel.cs" />
+    <Compile Include="Services\ForecastService.cs" />
     <Compile Include="Services\LoginServiceSQL.cs" />
-    <Compile Include="Services\WeatherForecastService.cs" />
     <Compile Include="Views\MainView2.xaml.cs">
       <DependentUpon>MainView2.xaml</DependentUpon>
     </Compile>

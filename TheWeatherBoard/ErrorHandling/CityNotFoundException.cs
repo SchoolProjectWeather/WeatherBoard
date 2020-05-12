@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 namespace TheWeatherBoard.ErrorHandling
 {
    
-        public class CityNotFoundException : Exception
+        public class ArgumentException : Exception
         {
-            public CityNotFoundException()
+            public ArgumentException()
             {
             }
 
-            public CityNotFoundException(string message) : base(message)
+            public ArgumentException(string message) : base(message)
             {
             }
 
-            public CityNotFoundException(string message, Exception inner) : base(message, inner)
+            public ArgumentException(string message, Exception inner) : base(message, inner)
             {
             }
         }

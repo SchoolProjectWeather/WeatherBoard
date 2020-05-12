@@ -39,7 +39,7 @@ namespace TheWeatherBoard.Services
             }
             catch
             {
-                throw new CityNotFoundException("City not found!");
+                throw new System.ArgumentException("City not found!");
             }
            
             
@@ -60,10 +60,10 @@ namespace TheWeatherBoard.Services
             }
             else
             {
-                throw new UnauthorizedAPIConnection("Invalid API key.");
+                throw new System.ArgumentException("Invalid API key.");
             }
-                throw new UnauthorizedAPIConnection("Invalid API key.");
 
+            throw new System.ArgumentException("Invalid API key.");
         }
 
 

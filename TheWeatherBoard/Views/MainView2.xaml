@@ -24,12 +24,12 @@
                          
                         </StackPanel>
                     </Border>
-                    <Border Background="White" Margin="10 20" CornerRadius="5">
+                    <Border Background="White" Margin="10 30" CornerRadius="5">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <StackPanel Width="170" Height="200">
-                                <Label Content="{Binding City}" FontSize="18" Style="{StaticResource MaterialDesignLabel}"/>
-                                <Image Width="100" Height="100" Source="{Binding WeatherIcon}" HorizontalAlignment="Left"/>
-                                <Label Content="{Binding Temperature}" FontSize="18" Style="{StaticResource MaterialDesignLabel}"/>
+                            <StackPanel Width="170" Height="200" Margin="0,10,50,5">
+                            <Label Content="{Binding City}"  FontSize="18" Style="{StaticResource MaterialDesignLabel}" FontWeight="Bold" HorizontalContentAlignment="Center" />
+                            <Image Width="130" Height="130"  Source="{Binding WeatherIcon}" HorizontalAlignment="Center" />
+                            <Label Content="{Binding Temperature}" FontSize="18" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center" />
                             </StackPanel>
                             <StackPanel Width="170" Height="200">
                                 <Label Content="{Binding Description}" Style="{StaticResource MaterialDesignLabel}"/>
@@ -42,49 +42,51 @@
                         </StackPanel>
                     </Border>
 
-                    <Border Background="White"  CornerRadius="5" Margin="-49,0,-63,0">
-                        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Height="200">
-                            <StackPanel>
-                            <Label Content="{Binding Day1}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <Image Source="{Binding Icon1}"  Width="100" Height="100" />
-                            <Label Content="{Binding Degree1}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <!-- <Label Content="{Binding TempMax1}" Style="{StaticResource MaterialDesignLabel}"/>-->
-                            <Label Content="{Binding Description1}" Style="{StaticResource MaterialDesignLabel}"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Content="{Binding Day2}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <Image Source="{Binding Icon2}"  Width="100" Height="100" />
-                            <Label Content="{Binding Degree2}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <!-- <Label Content="{Binding TempMax2}" Style="{StaticResource MaterialDesignLabel}"/>-->
-                            <Label Content="{Binding Description2}" Style="{StaticResource MaterialDesignLabel}"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Content="{Binding Day3}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <Image Source="{Binding Icon3}"  Width="100" Height="100" />
-                            <Label Content="{Binding Degree3}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <!-- <Label Content="{Binding TempMax3}" Style="{StaticResource MaterialDesignLabel}"/>-->
-                            <Label Content="{Binding Description3}" Style="{StaticResource MaterialDesignLabel}"/>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Center">
-                            <Label Content="{Binding Day4}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <Image Source="{Binding Icon4}"  Width="100" Height="100"/>
-                            <Label Content="{Binding Degree4}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <!--  <Label Content="{Binding TempMax4}" Style="{StaticResource MaterialDesignLabel}"/>-->
-                            <Label Content="{Binding Description4}" Style="{StaticResource MaterialDesignLabel}"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Content="{Binding Day5}" Style="{StaticResource MaterialDesignLabel}"/>
-                            <Image Source="{Binding Icon5}" Width="100" Height="100"/>
-                            <Label Content="{Binding Degree5}" Style="{StaticResource MaterialDesignLabel}"/>
-                           <!-- <Label Content="{Binding TempMax5}" Style="{StaticResource MaterialDesignLabel}"/>-->
-                            <Label Content="{Binding Description5}" Style="{StaticResource MaterialDesignLabel}"/>
-                        </StackPanel>
-                    </StackPanel>
-                    </Border>
-                </StackPanel>
+                
 
 
 
             </StackPanel>
-        </Grid>
+
+            <Border Background="White"  CornerRadius="5" Margin="-30,0,-30,0" >
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Height="200">
+                    <StackPanel>
+                        <Label Content="{Binding Day1}" Style="{StaticResource MaterialDesignLabel}" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="0,10,0,0"/>
+                        <Image Source="{Binding Icon1}"  Width="100" Height="100" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Degree1}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                        <!-- <Label Content="{Binding TempMax1}" Style="{StaticResource MaterialDesignLabel}"/>-->
+                        <Label Content="{Binding Description1}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="{Binding Day2}" Style="{StaticResource MaterialDesignLabel}" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="0,10,0,0"/>
+                        <Image Source="{Binding Icon2}"  Width="100" Height="100" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Degree2}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                        <!-- <Label Content="{Binding TempMax2}" Style="{StaticResource MaterialDesignLabel}"/>-->
+                        <Label Content="{Binding Description2}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="{Binding Day3}" Style="{StaticResource MaterialDesignLabel}" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="0,10,0,0"/>
+                        <Image Source="{Binding Icon3}"  Width="100" Height="100" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Degree3}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                        <!-- <Label Content="{Binding TempMax3}" Style="{StaticResource MaterialDesignLabel}"/>-->
+                        <Label Content="{Binding Description3}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="{Binding Day4}" Style="{StaticResource MaterialDesignLabel}" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="0,10,0,0"/>
+                        <Image Source="{Binding Icon4}"  Width="100" Height="100" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Degree4}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                        <!--  <Label Content="{Binding TempMax4}" Style="{StaticResource MaterialDesignLabel}"/>-->
+                        <Label Content="{Binding Description4}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="{Binding Day5}" Style="{StaticResource MaterialDesignLabel}" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="0,10,0,0"/>
+                        <Image Source="{Binding Icon5}" Width="100" Height="100" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Degree5}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                        <!-- <Label Content="{Binding TempMax5}" Style="{StaticResource MaterialDesignLabel}"/>-->
+                        <Label Content="{Binding Description5}" Style="{StaticResource MaterialDesignLabel}" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
 </Window>

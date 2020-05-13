@@ -34,6 +34,7 @@ namespace TheWeatherBoard.ViewModels
 
         private void  ShowWeather()
         {
+            //CurrentWeather
             CurrentWeatherModel model = new CurrentWeatherModel();
             model= currentWeatherService.GetCurrentWeather(Location);
 
@@ -48,12 +49,12 @@ namespace TheWeatherBoard.ViewModels
             Sunset = "sunset: "+ calcuteConverter.UnixTimeStampConverter(model.sys.sunset);
             WeatherIcon= iconPick.pickIcon(model.weather[0].icon);
 
-
+            //WeatherForecast
             ForecastModel modelForecast = new ForecastModel();
             modelForecast = forecastService.GetForecast(Location);
             DateTime thisDay = DateTime.Now;
             string date = thisDay.GetDateTimeFormats('D')[0];
-            Day1 = date.Split(',')[0];
+            Day1 ="Heute";
             Icon1 = iconPick.pickIcon(modelForecast.list[4].weather[0].icon);
             Description1 = modelForecast.list[4].weather[0].description;
             Degree1 = Convert.ToString(modelForecast.list[4].main.temp_min) + "C°";

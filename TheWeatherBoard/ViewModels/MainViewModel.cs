@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace TheWeatherBoard.ViewModels
         public ForecastService forecastService;
         public IconPick iconPick;
         public ButtonCommandBase ShowWeatherCommand { get; private set; }
+        public ObservableCollection<String> CityOutput { get; set; }
 
         public MainViewModel()
         {  
@@ -30,6 +33,7 @@ namespace TheWeatherBoard.ViewModels
             currentWeatherService = new CurrentWeatherService();
             ShowWeatherCommand = new ButtonCommandBase(ShowWeather);
             forecastService = new ForecastService();
+            CityOutput = new ObservableCollection<string>();
         }
 
         private void  ShowWeather()
@@ -120,13 +124,57 @@ namespace TheWeatherBoard.ViewModels
         private string _location;
         public string Location
         {
-            get { return _location; }
+            get
+            {
+                getData(_location);
+                return _location;
+            }
             set
             {
                 _location = value;
                 OnPropertyChanged();
             }
         }
+        private void getData(String Eingabe)
+        {
+            String anfang = Eingabe + "%";
+            //var border = (resultStack.Parent as ScrollViewer).Parent as Border;
+
+
+            if (!String.IsNullOrEmpty(Eingabe))
+            {
+                try
+                {
+                    MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3307;DATABASE=Personen;UID=root;Pwd=root;");
+                    myConnection.Open();
+
+
+                    //Alle Datensätze aus der DB holen per SQL-Befehl.
+                    string mySelectQuery = @"SELECT name FROM personen.`current.city.list.min` where (name Like '" + anfang + "') ORDER BY name Limit 8";
+                    MySqlCommand myCommand = new MySqlCommand(mySelectQuery, myConnection);
+
+                    MySqlDataReader Reader = myCommand.ExecuteReader();
+
+                    //CityOutput.Items.clear();
+                    CityOutput.Clear();
+
+
+
+                    while (Reader.Read())
+                    {
+                        CityOutput.Add(Reader.GetValue(0).ToString());
+
+                    }
+                    //Verbindung zur Datenbank wieder abbauen.
+                    myConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
 
 
         private string _temperature;

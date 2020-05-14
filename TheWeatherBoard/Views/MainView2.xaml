@@ -17,8 +17,8 @@
                 <StackPanel Margin="25">
                     <Border Background="White" Margin="10 20" CornerRadius="5">
                         <StackPanel Orientation="Horizontal" >
-                            <TextBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Location}" Width="300" materialDesign:HintAssist.Hint="City"/>
-                            <Button Command="{Binding ShowWeatherCommand}">
+                        <ComboBox Text = "{Binding Location, UpdateSourceTrigger=PropertyChanged}" x:Name="tbAusgabe" ItemsSource="{Binding CityOutput}" Margin="17,10,17,15" Width="305" Background="White" IsEditable="True"/>
+                        <Button Command="{Binding ShowWeatherCommand}">
                                 <materialDesign:PackIcon Kind="Search"/>
                             </Button>
                          

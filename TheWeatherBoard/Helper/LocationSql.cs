@@ -1,0 +1,54 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using TheWeatherBoard.ViewModels;
+
+namespace TheWeatherBoard.Helper
+{
+    
+    public class LocationSql
+    {
+       // MainViewModel hallo = new MainViewModel();
+        public string getLocation(string eingabe, ObservableCollection<string> cityOutput)
+        {
+            
+            String anfang = eingabe + "%";
+
+            if (!String.IsNullOrEmpty(eingabe))
+            {
+                try
+                {
+                    MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3307;DATABASE=mydb;UID=root;Pwd=root;");
+                    myConnection.Open();
+
+                    //Alle Datensätze aus der DB holen per SQL-Befehl.
+                    string mySelectQuery = @"SELECT name FROM  `city.list.min` where (name Like '" + anfang + "') ORDER BY name Limit 8";
+                    MySqlCommand myCommand = new MySqlCommand(mySelectQuery, myConnection);
+                    MySqlDataReader Reader = myCommand.ExecuteReader();
+                    
+                    cityOutput.Clear();
+
+                    while (Reader.Read())
+                    {
+                        
+                     cityOutput.Add( Reader.GetValue(0).ToString());
+                        
+                    }
+                    //Verbindung zur Datenbank wieder abbauen.
+
+                    myConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            } 
+            return null;
+        }
+    }
+}

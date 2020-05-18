@@ -111,6 +111,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\LocationSql.cs" />
     <Compile Include="Models\ForecastModel.cs" />
     <Compile Include="Services\ForecastService.cs" />
     <Compile Include="Services\LoginServiceSQL.cs" />

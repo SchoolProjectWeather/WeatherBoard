@@ -25,6 +25,7 @@ namespace TheWeatherBoard.ViewModels
         public IconPick iconPick;
         public ButtonCommandBase ShowWeatherCommand { get; private set; }
         public ObservableCollection<String> CityOutput { get; set; }
+        
 
         public MainViewModel()
         {  
@@ -121,58 +122,29 @@ namespace TheWeatherBoard.ViewModels
             }
         }
 
+        LocationSql myVerbindung = new LocationSql();
         private string _location;
         public string Location
         {
             get
             {
-                getData(_location);
-                return _location;
+              
+               return _location;
             }
             set
             {
+                //hallo.tuetwas(Reader.GetValue(0).ToString());
+                //myVerbindung. awa.getLocation(Location, CityOutput);
+               
+
+                CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
                 _location = value;
                 OnPropertyChanged();
             }
         }
-        private void getData(String Eingabe)
+        public void tuetwas(String _city)
         {
-            String anfang = Eingabe + "%";
-            //var border = (resultStack.Parent as ScrollViewer).Parent as Border;
-
-
-            if (!String.IsNullOrEmpty(Eingabe))
-            {
-                try
-                {
-                    MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3307;DATABASE=Personen;UID=root;Pwd=root;");
-                    myConnection.Open();
-
-
-                    //Alle Datensätze aus der DB holen per SQL-Befehl.
-                    string mySelectQuery = @"SELECT name FROM personen.`current.city.list.min` where (name Like '" + anfang + "') ORDER BY name Limit 8";
-                    MySqlCommand myCommand = new MySqlCommand(mySelectQuery, myConnection);
-
-                    MySqlDataReader Reader = myCommand.ExecuteReader();
-
-                    //CityOutput.Items.clear();
-                    CityOutput.Clear();
-
-
-
-                    while (Reader.Read())
-                    {
-                        CityOutput.Add(Reader.GetValue(0).ToString());
-
-                    }
-                    //Verbindung zur Datenbank wieder abbauen.
-                    myConnection.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //CityOutput.Add();
         }
 
 

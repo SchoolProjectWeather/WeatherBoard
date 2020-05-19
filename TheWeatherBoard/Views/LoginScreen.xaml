@@ -32,8 +32,10 @@
                     <PasswordBox Margin="15" x:Name="pbPassword"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="Password"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Margin="15 50" Content="CANCEL" />
+                        
                         <Button Margin="15 50" Content="SIGN IN" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pbPassword, ValidatesOnExceptions=True}"/>
                     </StackPanel>
+                    <Button Content="Register" Command="{Binding RegisterCommand}"/>
                 </StackPanel>
 
 

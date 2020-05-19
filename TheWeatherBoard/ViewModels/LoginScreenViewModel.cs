@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using Caliburn.Micro;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Data.Linq;
@@ -18,8 +19,20 @@ namespace TheWeatherBoard.ViewModels
    public class LoginScreenViewModel: ViewModelBase
     {
         LoginServiceSQL loginService = new LoginServiceSQL();
-        
-       
+
+        public ButtonCommandBase RegisterCommand { get; private set; }
+
+        public LoginScreenViewModel()
+        {
+           RegisterCommand = new ButtonCommandBase(OpenRegisterPage);
+        }
+
+        private void OpenRegisterPage()
+        {
+            RegisterScreenViewModel register = new RegisterScreenViewModel();
+            Conductor<RegisterScreenViewModel> conductor = new Conductor<RegisterScreenViewModel>();
+            conductor.ActivateItem(register);
+        }
 
         private ICommand _loginCommand;
         public ICommand LoginCommand

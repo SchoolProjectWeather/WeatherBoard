@@ -14,16 +14,16 @@ namespace TheWeatherBoard.Helper
     public class LocationSql
     {
        // MainViewModel hallo = new MainViewModel();
-        public string getLocation(string eingabe, ObservableCollection<string> cityOutput)
+        public string getLocation(string eingabe, ObservableCollection<string>cityOutput)
         {
             
-            String anfang = eingabe + "%";
+            string anfang = eingabe + "%";
 
             if (!String.IsNullOrEmpty(eingabe))
             {
                 try
                 {
-                    MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3307;DATABASE=mydb;UID=root;Pwd=root;");
+                    MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=mydb;UID=root;Pwd=root;");
                     myConnection.Open();
 
                     //Alle Datensätze aus der DB holen per SQL-Befehl.
@@ -36,7 +36,7 @@ namespace TheWeatherBoard.Helper
                     while (Reader.Read())
                     {
                         
-                     cityOutput.Add( Reader.GetValue(0).ToString());
+                    cityOutput.Add( Reader.GetValue(0).ToString());
                         
                     }
                     //Verbindung zur Datenbank wieder abbauen.
@@ -47,7 +47,7 @@ namespace TheWeatherBoard.Helper
                 {
                     MessageBox.Show(ex.Message);
                 }
-            } 
+            }
             return null;
         }
     }

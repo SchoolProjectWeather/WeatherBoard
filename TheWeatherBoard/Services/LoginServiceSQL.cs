@@ -11,12 +11,15 @@ using TheWeatherBoard.Views;
 
 namespace TheWeatherBoard.Services
 {
-  public class LoginServiceSQL
+  public class LoginServiceSQL: ServicesSQL
     {
-		public void BuildSqlConnection(string username, string password)
+		public override void BuildSqlConnection(string name, string password)
 		{
-			
-			string connectionString = @"Server=127.0.0.1,3306;Database=Login;User Id=root;Password=root;";
+
+			name = AESEncryption.HashStringAes256(name);
+			password = AESEncryption.HashStringAes256(password);
+			//in config
+			string connectionString = "SERVER=127.0.0.1;Port=3306;DATABASE=mydb;UID=root;Pwd=root;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
 
 			try
@@ -26,11 +29,11 @@ namespace TheWeatherBoard.Services
 					connection.Open();
 				}
 
-				string query = "SELECT COUNT(1) FROM user WHERE userName=@userName AND Password=@Password";
+				string query = "SELECT COUNT(1) FROM users WHERE name=@name AND password=@password";
 				MySqlCommand sqlCommand = new MySqlCommand(query, connection);
 				sqlCommand.CommandType = System.Data.CommandType.Text;
-				sqlCommand.Parameters.AddWithValue("@userName", username);
-				sqlCommand.Parameters.AddWithValue("@Password", password);
+				sqlCommand.Parameters.AddWithValue("@name", name);
+				sqlCommand.Parameters.AddWithValue("@password", password);
 
 				int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
 

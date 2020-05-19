@@ -45,9 +45,9 @@ namespace TheWeatherBoard.ViewModels
 
             Temperature = model.main.temp + " C°";
             Description = model.weather[0].description;
-            TempFeelsLike = "Feels Like: " + model.main.feels_like + " C°";
-            TempMin ="Min Temperature: "+ model.main.temp_min + " C°";
-            TempMax = "Max Temperature: " + model.main.temp_max + " C°";
+            TempFeelsLike = "Feels Like: " + model.main.feels_like + "C°";
+            TempMin ="Min Temperature: "+ model.main.temp_min + "C°";
+            TempMax = "Max Temperature: " + model.main.temp_max +  "C°";
             WindSpeed = "Wind Speed: " + model.wind.speed + "m/s";
             City = model.name;
             Sunrise = "sunrise: "+ calcuteConverter.UnixTimeStampConverter(model.sys.sunrise);
@@ -133,20 +133,28 @@ namespace TheWeatherBoard.ViewModels
             }
             set
             {
-                //hallo.tuetwas(Reader.GetValue(0).ToString());
-                //myVerbindung. awa.getLocation(Location, CityOutput);
-               
-
-                CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
+                ///lalala();
+               CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
+                
                 _location = value;
                 OnPropertyChanged();
             }
         }
-        public void tuetwas(String _city)
+        public  void tuetwas()
         {
+            myVerbindung.getLocation(Location, CityOutput);
+           
+            //Task<string> task = new Task<string>(myVerbindung.getLocation(Location, CityOutput));
+            //await CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
+            //Task<string> task = new Task<string>(myVerbindung.getLocation(Location, CityOutput));
+            //task.Start();
             //CityOutput.Add();
         }
 
+        public void lalala()
+        {
+            Task.Run(new Action(tuetwas));
+        }
 
 
         private string _temperature;

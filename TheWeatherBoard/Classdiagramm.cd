@@ -11,9 +11,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="TheWeatherBoard.ViewModels.LoginScreenViewModel">
-    <Position X="12.75" Y="2.75" Width="2" />
+    <Position X="13.75" Y="3" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAIAAAAAAAAAAQAAAAAAAAAAAAwAACAAAA=</HashCode>
+      <HashCode>AAAAIAAAAAAIAAAAAAAAAAQAAAAAAACAABAwAACAAAA=</HashCode>
       <FileName>ViewModels\LoginScreenViewModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -23,12 +23,13 @@
   <Class Name="TheWeatherBoard.ViewModels.MainViewModel">
     <Position X="10.5" Y="2.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>gjIAQAQAIBAgAAAIQAoBEEAAAAAAAAAAACQGAICGAAA=</HashCode>
+      <HashCode>wzIASAQEIhAoBr2IUAoDEdQDIAAAARCAgDQGAIiGII4=</HashCode>
       <FileName>ViewModels\MainViewModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="calcuteConverter" />
       <Field Name="currentWeatherService" />
+      <Field Name="forecastService" />
       <Field Name="iconPick" />
       <Property Name="ShowWeatherCommand" />
     </ShowAsAssociation>
@@ -90,19 +91,109 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TheWeatherBoard.Services.LoginServiceSQL">
-    <Position X="16" Y="4" Width="2" />
+    <Position X="16.75" Y="4" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Services\LoginServiceSQL.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TheWeatherBoard.Bases.ButtonCommandBase">
-    <Position X="15.5" Y="6.5" Width="2.25" />
+    <Position X="15.75" Y="7.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Bases\ButtonCommandBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TheWeatherBoard.Models.ForecastModel">
+    <Position X="3" Y="9" Width="2.25" />
+    <NestedTypes>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.Main" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.Weather" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.Clouds" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.Wind" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.Sys" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.List" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.Coord" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheWeatherBoard.Models.ForecastModel.City" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ForecastModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAggAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Models\ForecastModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheWeatherBoard.Services.ForecastService">
+    <Position X="6.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAABAAIAAI=</HashCode>
+      <FileName>Services\ForecastService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="model" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheWeatherBoard.Services.RegisterServiceSQL">
+    <Position X="19.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Services\RegisterServiceSQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheWeatherBoard.Services.ServicesSQL">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Services\ServicesSQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheWeatherBoard.ViewModels.RegisterScreenViewModel">
+    <Position X="13.5" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAJAAAAAAAACAAAQAAAAEAAA=</HashCode>
+      <FileName>ViewModels\RegisterScreenViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="registerService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheWeatherBoard.Services.AESEncryption">
+    <Position X="21.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\AESEncryption.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

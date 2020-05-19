@@ -13,13 +13,13 @@ namespace TheWeatherBoard.Services
 {
   public class LoginServiceSQL: ServicesSQL
     {
-		public override void BuildSqlConnection(string name, string password)
+		public override void BuildSqlConnection(string userName, string password)
 		{
 
-			name = AESEncryption.HashStringAes256(name);
+			userName = AESEncryption.HashStringAes256(userName);
 			password = AESEncryption.HashStringAes256(password);
 			//in config
-			string connectionString = "SERVER=127.0.0.1;Port=3306;DATABASE=mydb;UID=root;Pwd=root;";
+			string connectionString = "SERVER=127.0.0.1;Port=3306;DATABASE=city;UID=root;Pwd=root;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
 
 			try
@@ -29,11 +29,11 @@ namespace TheWeatherBoard.Services
 					connection.Open();
 				}
 
-				string query = "SELECT COUNT(1) FROM users WHERE name=@name AND password=@password";
+				string query = "SELECT COUNT(1) FROM login WHERE userName=@userName AND Password=@Password";
 				MySqlCommand sqlCommand = new MySqlCommand(query, connection);
 				sqlCommand.CommandType = System.Data.CommandType.Text;
-				sqlCommand.Parameters.AddWithValue("@name", name);
-				sqlCommand.Parameters.AddWithValue("@password", password);
+				sqlCommand.Parameters.AddWithValue("@userName", userName);
+				sqlCommand.Parameters.AddWithValue("@Password", password);
 
 				int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
 

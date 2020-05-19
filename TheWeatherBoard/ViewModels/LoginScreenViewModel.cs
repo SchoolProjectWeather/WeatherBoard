@@ -19,8 +19,9 @@ namespace TheWeatherBoard.ViewModels
    public class LoginScreenViewModel: ViewModelBase
     {
         LoginServiceSQL loginService = new LoginServiceSQL();
-
         public ButtonCommandBase RegisterCommand { get; private set; }
+
+        
 
         public LoginScreenViewModel()
         {
@@ -29,9 +30,8 @@ namespace TheWeatherBoard.ViewModels
 
         private void OpenRegisterPage()
         {
-            RegisterScreenViewModel register = new RegisterScreenViewModel();
-            Conductor<RegisterScreenViewModel> conductor = new Conductor<RegisterScreenViewModel>();
-            conductor.ActivateItem(register);
+            RegisterScreen registerView = new RegisterScreen();
+            registerView.Show();
         }
 
         private ICommand _loginCommand;
@@ -59,9 +59,7 @@ namespace TheWeatherBoard.ViewModels
 
             loginService.BuildSqlConnection(Name, pwBox.Password);
 
- 
-
-
+            
         }
 
 

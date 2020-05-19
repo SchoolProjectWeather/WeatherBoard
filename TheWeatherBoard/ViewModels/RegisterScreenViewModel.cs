@@ -49,16 +49,25 @@ namespace TheWeatherBoard.ViewModels
         {
             PasswordBox pwBox = obj as PasswordBox;
 
-            registerService.BuildSqlConnection(RegisterName, pwBox.Password);
-           
-            LoginScreen loginView = new LoginScreen();
-            loginView.Show();
-
-
-            var registerScreen = (Application.Current.MainWindow as RegisterScreen);
-            if (registerScreen != null)
+            try
             {
-               registerScreen.Close();
+
+
+                registerService.BuildSqlConnection(RegisterName, pwBox.Password);
+                MessageBox.Show("Erfolgreich registiert!");
+                LoginScreen loginView = new LoginScreen();
+                loginView.Show();
+
+
+                var registerScreen = (Application.Current.MainWindow as RegisterScreen);
+                if (registerScreen != null)
+                {
+                    registerScreen.Close();
+                }
+            }
+            catch
+            {
+                throw new ArgumentException("Registrierung fehlgeschlagen!");
             }
 
             //SQL Inser-Befehl

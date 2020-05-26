@@ -27,7 +27,6 @@ namespace TheWeatherBoard.Services
                     connection.Open();
                 }
 
-                //Alle Datensätze aus der DB holen per SQL-Befehl.
                 string mySelectQuery = $@"INSERT INTO `city`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
                 MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);
                 MySqlDataReader Reader = myCommand.ExecuteReader();

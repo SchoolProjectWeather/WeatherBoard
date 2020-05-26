@@ -24,7 +24,7 @@ namespace TheWeatherBoard.ViewModels
         public ForecastService forecastService;
         public IconPick iconPick;
         public ButtonCommandBase ShowWeatherCommand { get; private set; }
-        public ObservableCollection<String> CityOutput { get; set; }
+        public ObservableCollection<string> CityOutput { get; set; }
         
 
         public MainViewModel()
@@ -37,11 +37,11 @@ namespace TheWeatherBoard.ViewModels
             CityOutput = new ObservableCollection<string>();
         }
 
-        private void  ShowWeather()
+        private async void  ShowWeather()
         {
             //CurrentWeather
             CurrentWeatherModel model = new CurrentWeatherModel();
-            model= currentWeatherService.GetCurrentWeather(Location);
+            model= await Task.Run(()=> currentWeatherService.GetCurrentWeather(Location));
 
             Temperature = model.main.temp + " C°";
             Description = model.weather[0].description;
@@ -56,7 +56,7 @@ namespace TheWeatherBoard.ViewModels
 
             //WeatherForecast
             ForecastModel modelForecast = new ForecastModel();
-            modelForecast = forecastService.GetForecast(Location);
+            modelForecast = await Task.Run(() => forecastService.GetForecast(Location));
             DateTime thisDay = DateTime.Now;
             string date = thisDay.GetDateTimeFormats('D')[0];
             Day1 ="Heute";
@@ -133,28 +133,20 @@ namespace TheWeatherBoard.ViewModels
             }
             set
             {
-                ///lalala();
-               CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
-                
+
+                CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
+              
                 _location = value;
                 OnPropertyChanged();
             }
         }
-        public  void tuetwas()
+        public async Task tuetwas()
         {
-            myVerbindung.getLocation(Location, CityOutput);
-           
-            //Task<string> task = new Task<string>(myVerbindung.getLocation(Location, CityOutput));
-            //await CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
-            //Task<string> task = new Task<string>(myVerbindung.getLocation(Location, CityOutput));
-            //task.Start();
-            //CityOutput.Add();
+            await Task.Run(() => myVerbindung.getLocation(Location, CityOutput));
+        
         }
 
-        public void lalala()
-        {
-            Task.Run(new Action(tuetwas));
-        }
+ 
 
 
         private string _temperature;

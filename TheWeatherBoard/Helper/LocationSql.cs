@@ -14,7 +14,7 @@ namespace TheWeatherBoard.Helper
     public class LocationSql
     {
        // MainViewModel hallo = new MainViewModel();
-        public string getLocation(string eingabe, ObservableCollection<string>cityOutput)
+        public  string getLocation(string eingabe, ObservableCollection<string>cityOutput)
         {
             
             string anfang = eingabe + "%";
@@ -27,7 +27,7 @@ namespace TheWeatherBoard.Helper
                     myConnection.Open();
 
                     //Alle Datensätze aus der DB holen per SQL-Befehl.
-                    string mySelectQuery = @"SELECT name FROM  `city.list.min` where (name Like '" + anfang + "') ORDER BY name Limit 8";
+                    string mySelectQuery = @"SELECT name FROM  `city` where (name Like '" + anfang + "') ORDER BY name Limit 8";
                     MySqlCommand myCommand = new MySqlCommand(mySelectQuery, myConnection);
                     MySqlDataReader Reader = myCommand.ExecuteReader();
                     

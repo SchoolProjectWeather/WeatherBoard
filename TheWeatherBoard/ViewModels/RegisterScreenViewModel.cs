@@ -29,6 +29,7 @@ namespace TheWeatherBoard.ViewModels
             }
         }
 
+
         private ICommand _registerCommand;
         public ICommand RegisterCommand
         {
@@ -48,26 +49,32 @@ namespace TheWeatherBoard.ViewModels
         private void Registration(object obj)
         {
             PasswordBox pwBox = obj as PasswordBox;
-
-            try
+            
+            if (RegisterName == null || pwBox.Password.Length <= 0)
             {
-
-
-                registerService.BuildSqlConnection(RegisterName, pwBox.Password);
-                MessageBox.Show("Erfolgreich registiert!");
-                LoginScreen loginView = new LoginScreen();
-                loginView.Show();
-
-
-                var registerScreen = (Application.Current.MainWindow as RegisterScreen);
-                if (registerScreen != null)
-                {
-                    registerScreen.Close();
-                }
-            }
-            catch
-            {
-                throw new ArgumentException("Registrierung fehlgeschlagen!");
+                MessageBox.Show("Bitte beide Felder ausfüllen");
+            } else { 
+            
+                   try
+                   {
+                
+                       registerService.BuildSqlConnection(RegisterName, pwBox.Password);
+                       MessageBox.Show("Erfolgreich registiert!");
+                       LoginScreen loginView = new LoginScreen();
+                       loginView.Show();
+                
+                
+                       var registerScreen = (Application.Current.MainWindow as RegisterScreen);
+                       if (registerScreen != null)
+                       {
+                           registerScreen.Close();
+                       }
+                   }
+                   catch
+                   {
+                       throw new ArgumentException("Registrierung fehlgeschlagen!");
+                   }
+                
             }
 
             //SQL Inser-Befehl

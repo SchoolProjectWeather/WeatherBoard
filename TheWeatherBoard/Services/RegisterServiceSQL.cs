@@ -17,7 +17,7 @@ namespace TheWeatherBoard.Services
            username= AESEncryption.HashStringAes256(username);
            password = AESEncryption.HashStringAes256(password);
 
-            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=city;UID=root;Pwd=root;");
+            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;");
             connection.Open();
 
             try
@@ -27,7 +27,7 @@ namespace TheWeatherBoard.Services
                     connection.Open();
                 }
 
-                string mySelectQuery = $@"INSERT INTO `city`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
+                string mySelectQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
                 MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);
                 MySqlDataReader Reader = myCommand.ExecuteReader();
             }

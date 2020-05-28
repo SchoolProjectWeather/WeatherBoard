@@ -13,13 +13,13 @@ namespace TheWeatherBoard.Services
 {
     public class RegisterServiceSQL : ServicesSQL
     {
-       
+
         public override void BuildSqlConnection(string username, string password)
         {
-           username= AESEncryption.HashStringAes256(username);
-           password = AESEncryption.HashStringAes256(password);
+            username = AESEncryption.HashStringAes256(username);
+            password = AESEncryption.HashStringAes256(password);
 
-           
+
             MySqlConnection connection = new MySqlConnection(ServicesSQL.connectionString);
             connection.Open();
 
@@ -29,14 +29,22 @@ namespace TheWeatherBoard.Services
                 {
                     connection.Open();
                 }
-                string mySelectQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
-                MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);
-                MySqlDataReader Reader = myCommand.ExecuteReader();
-                var registerScreen = (Application.Current.MainWindow as RegisterScreen);
+                string checkQuery = $"SELECT COUNT(1) FROM login WHERE userName='{username}'";
+                MySqlCommand checkCommand = new MySqlCommand(checkQuery, connection);
+                checkCommand.Parameters.AddWithValue("@userName", username);
+                checkCommand.Parameters.AddWithValue("@Password", password);
+                int count = Convert.ToInt32(checkCommand.ExecuteScalar());
 
-                if (registerScreen != null)
+                if (count >= 1)
                 {
-                    registerScreen.Close();
+                    MessageBox.Show("Dein Nutzername ist schon vergeben, wähle bitte einen anderen und Versuche es erneut.");
+                }
+                else if (count == 0)
+                {
+                    string mySelectQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
+                    MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);
+                    MySqlDataReader Reader = myCommand.ExecuteReader();
+                    MessageBox.Show("Erfolgreich registiert!");
                 }
             }
 

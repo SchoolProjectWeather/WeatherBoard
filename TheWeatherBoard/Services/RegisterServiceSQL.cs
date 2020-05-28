@@ -32,6 +32,12 @@ namespace TheWeatherBoard.Services
                 string mySelectQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
                 MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);
                 MySqlDataReader Reader = myCommand.ExecuteReader();
+                var registerScreen = (Application.Current.MainWindow as RegisterScreen);
+
+                if (registerScreen != null)
+                {
+                    registerScreen.Close();
+                }
             }
 
             catch

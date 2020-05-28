@@ -18,7 +18,19 @@ namespace TheWeatherBoard.ViewModels
   public class RegisterScreenViewModel: ViewModelBase
     {
         RegisterServiceSQL registerService = new RegisterServiceSQL();
-        
+        public RelayCommand<Window> CloseRegisterCommand { get; private set; }
+
+        public RegisterScreenViewModel()
+        {
+            this.CloseRegisterCommand = new RelayCommand<Window>(this.CloseRegister);
+        }
+        private void CloseRegister(Window window)
+        {
+            if (window != null)
+            {
+                window.Close();
+            }
+        }
 
         private string _registerName;
         public string RegisterName

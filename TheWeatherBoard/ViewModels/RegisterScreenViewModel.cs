@@ -60,7 +60,6 @@ namespace TheWeatherBoard.ViewModels
                 {
 
                     await Task.Run(() => registerService.BuildSqlConnection(RegisterName, pwBox.Password));
-                    MessageBox.Show("Erfolgreich registiert!");
                     LoginScreen loginView = new LoginScreen();
                     loginView.Show();
 

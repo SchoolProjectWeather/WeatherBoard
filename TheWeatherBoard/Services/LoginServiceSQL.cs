@@ -15,11 +15,10 @@ namespace TheWeatherBoard.Services
     {
 		public override void BuildSqlConnection(string userName, string password)
 		{
-
 			userName = AESEncryption.HashStringAes256(userName);
 			password = AESEncryption.HashStringAes256(password);
 			MySqlConnection connection = new MySqlConnection(ServicesSQL.connectionString);
-		
+
 			try
 			{
 				if (connection.State == ConnectionState.Closed)
@@ -39,7 +38,6 @@ namespace TheWeatherBoard.Services
 				{
 					MainView2 mainView = new MainView2();
 					mainView.Show();
-
 					var loginScreen = (Application.Current.MainWindow as LoginScreen);
 					if (loginScreen != null)
 					{

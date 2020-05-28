@@ -1,4 +1,5 @@
 ﻿<Window x:Class="TheWeatherBoard.Views.RegisterScreen"
+        x:Name="WeatherBoard_Register"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,7 +30,7 @@
                 <TextBox Margin="15" Text="{Binding RegisterName}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Name"/>
                 <PasswordBox Margin="15" x:Name="pbRegisterPassword"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="Password"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Margin="0 10 5 0"  Content="CANCEL"/>
+                    <Button Margin="0 10 5 0"  Content="CANCEL" Command="{Binding CloseRegisterCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=WeatherBoard_Register}"/>
                     <Button Margin="5 10 0 0" Content="REGISTER" Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=pbRegisterPassword, ValidatesOnExceptions=True}"/>
                 </StackPanel>
             </StackPanel>

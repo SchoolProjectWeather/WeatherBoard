@@ -20,20 +20,36 @@ namespace TheWeatherBoard.ViewModels
    public class LoginScreenViewModel: ViewModelBase
     {
         LoginServiceSQL loginService = new LoginServiceSQL();
-        public ButtonCommandBase RegisterCommand { get; private set; }
+        public RelayCommand<Window> CloseWindowCommand { get; private set; }
+        public RelayCommand<Window> RegisterCommand { get; private set; }
 
-        
+
 
         public LoginScreenViewModel()
         {
-           RegisterCommand = new ButtonCommandBase(OpenRegisterPage);
+            this.CloseWindowCommand = new RelayCommand<Window>(this.CloseWindow);
+            this.RegisterCommand = new RelayCommand<Window>(this.RegisterWindow);
+        }
+        private void RegisterWindow(Window window)
+        {
+            OpenRegisterPage();
+            if (window != null)
+            {
+                window.Close();
+            }
         }
 
+        private void CloseWindow(Window window)
+        {
+            if (window != null)
+            {
+                window.Close();
+            }
+        }
         private void OpenRegisterPage()
         {
             RegisterScreen registerView = new RegisterScreen();
             registerView.Show();
-
             var loginScreen = (Application.Current.MainWindow as LoginScreen);
             if (loginScreen != null)
             {
@@ -52,9 +68,7 @@ namespace TheWeatherBoard.ViewModels
                 return _loginCommand;
             }
             set
-            {
-
-              
+            { 
             }
         }
 

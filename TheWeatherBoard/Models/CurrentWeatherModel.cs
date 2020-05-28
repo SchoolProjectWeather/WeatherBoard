@@ -9,8 +9,6 @@ namespace TheWeatherBoard.Models
    public class CurrentWeatherModel
     {
         public string name { get; set; }
-
-
         public class Weather
         {
             public string description { get; set; }

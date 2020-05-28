@@ -15,22 +15,9 @@ using TheWeatherBoard.Views;
 
 namespace TheWeatherBoard.ViewModels
 {
-  public class RegisterScreenViewModel: ViewModelBase
+    public class RegisterScreenViewModel : ViewModelBase
     {
         RegisterServiceSQL registerService = new RegisterServiceSQL();
-        public RelayCommand<Window> CloseRegisterCommand { get; private set; }
-
-        public RegisterScreenViewModel()
-        {
-            this.CloseRegisterCommand = new RelayCommand<Window>(this.CloseRegister);
-        }
-        private void CloseRegister(Window window)
-        {
-            if (window != null)
-            {
-                window.Close();
-            }
-        }
 
         private string _registerName;
         public string RegisterName
@@ -42,7 +29,6 @@ namespace TheWeatherBoard.ViewModels
                 OnPropertyChanged();
             }
         }
-
 
         private ICommand _registerCommand;
         public ICommand RegisterCommand
@@ -63,28 +49,27 @@ namespace TheWeatherBoard.ViewModels
         private async void Registration(object obj)
         {
             PasswordBox pwBox = obj as PasswordBox;
-            
+
             if (RegisterName == null || pwBox.Password.Length <= 0)
             {
                 MessageBox.Show("Bitte beide Felder ausfüllen");
-            } else { 
-            
-                   try
-                   {
+            }
+            else
+            {
+                try
+                {
 
                     await Task.Run(() => registerService.BuildSqlConnection(RegisterName, pwBox.Password));
-                       MessageBox.Show("Erfolgreich registiert!");
-
-            
+                    MessageBox.Show("Erfolgreich registiert!");
                     LoginScreen loginView = new LoginScreen();
                     loginView.Show();
 
                 }
-                   catch
-                   {
-                       throw new ArgumentException("Registrierung fehlgeschlagen!");
-                   }
-                
+                catch
+                {
+                    throw new ArgumentException("Registrierung fehlgeschlagen!");
+                }
+
             }
 
             //SQL Inser-Befehl
@@ -92,3 +77,4 @@ namespace TheWeatherBoard.ViewModels
         }
     }
 }
+

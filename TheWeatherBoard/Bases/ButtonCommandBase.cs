@@ -9,10 +9,7 @@ namespace TheWeatherBoard.Bases
 {
    public class ButtonCommandBase: ICommand
     {
-       
-            private Action _execute;
-           
-
+        private Action _execute;
         public event EventHandler CanExecuteChanged;
 
             public ButtonCommandBase(Action execute)
@@ -20,13 +17,10 @@ namespace TheWeatherBoard.Bases
                 _execute = execute;
             }
 
-      
-
         public void Execute(object parameter)
             {
                 _execute.Invoke();
                
-            
             }
 
             public bool CanExecute(object parameter)

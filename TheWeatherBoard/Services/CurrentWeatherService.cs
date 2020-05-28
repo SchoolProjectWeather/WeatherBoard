@@ -24,10 +24,6 @@ namespace TheWeatherBoard.Services
             client.BaseAddress = new Uri("http://api.openweathermap.org/data/2.5/");
             
         }
-   
-
-        
-        
         public CurrentWeatherModel GetCurrentWeather(string location)
         {
             var url = $"weather?q={location}&units=metric&appid={APP_ID}";
@@ -42,7 +38,6 @@ namespace TheWeatherBoard.Services
                 throw new System.ArgumentException("City not found!");
             }
            
-            
             if (responseStream != null)
             {
                 using (var streamReader = new StreamReader(responseStream))
@@ -50,7 +45,6 @@ namespace TheWeatherBoard.Services
                     while (streamReader.Peek() > -1)
                     {
                         model = new CurrentWeatherModel();
-                        //var model = new Models.CurrentWeatherModel();
                         model = JsonConvert.DeserializeObject<CurrentWeatherModel>(streamReader.ReadLine());
                         return model;
 

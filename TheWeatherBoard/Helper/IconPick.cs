@@ -15,8 +15,6 @@ namespace TheWeatherBoard.Helper
         public string pickIcon(string iconId)
         {
             string iconSource="";
-           
-           
             string caseSwtich = iconId;
 
             switch (caseSwtich)
@@ -49,8 +47,6 @@ namespace TheWeatherBoard.Helper
                     iconSource = "\\Assets\\50d.png";
                     break;
 
-
-
                 case "01n":
                     iconSource = "\\Assets\\01d.png";
                     break;
@@ -77,13 +73,8 @@ namespace TheWeatherBoard.Helper
                     break;
                 case "50n":
                     iconSource = "\\Assets\\50d.png";
-                    break;
-
-
-
-                    ;
+                    break;;
             }
-
             return iconSource;
         }
     }

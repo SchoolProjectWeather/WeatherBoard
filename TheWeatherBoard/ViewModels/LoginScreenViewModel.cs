@@ -33,7 +33,6 @@ namespace TheWeatherBoard.ViewModels
         {
             RegisterScreen registerView = new RegisterScreen();
             registerView.Show();
-
             var loginScreen = (Application.Current.MainWindow as LoginScreen);
             if (loginScreen != null)
             {
@@ -52,9 +51,7 @@ namespace TheWeatherBoard.ViewModels
                 return _loginCommand;
             }
             set
-            {
-
-              
+            { 
             }
         }
 

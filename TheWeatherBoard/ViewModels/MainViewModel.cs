@@ -44,7 +44,7 @@ namespace TheWeatherBoard.ViewModels
             model= await Task.Run(()=> currentWeatherService.GetCurrentWeather(Location));
 
             Temperature = model.main.temp + " C°";
-            Description = model.weather[0].description;
+            Description = "Description: "+ model.weather[0].description;
             TempFeelsLike = "Feels Like: " + model.main.feels_like + "C°";
             TempMin ="Min Temperature: "+ model.main.temp_min + "C°";
             TempMax = "Max Temperature: " + model.main.temp_max +  "C°";
@@ -146,9 +146,6 @@ namespace TheWeatherBoard.ViewModels
         
         }
 
- 
-
-
         private string _temperature;
         public string Temperature
         {
@@ -159,8 +156,6 @@ namespace TheWeatherBoard.ViewModels
                 OnPropertyChanged();
             }
         }
-
-    
 
         private string _descrition;
         public string Description

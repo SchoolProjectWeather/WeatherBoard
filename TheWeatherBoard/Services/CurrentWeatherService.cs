@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheWeatherBoard.ErrorHandling;
 using TheWeatherBoard.Models;
+using System.Windows;
 
 namespace TheWeatherBoard.Services
 {
@@ -65,7 +67,43 @@ namespace TheWeatherBoard.Services
 
             throw new System.ArgumentException("Invalid API key.");
         }
+        
+        public void updateFavCity(int locationid, int primaryKey)
+        {
+            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=;");
+            
+            try
+            {
+                connection.Open();
+                string updateQuery = $"UPDATE login SET city_id = '{locationid}' WHERE id = {primaryKey}";
+                MySqlCommand myCommand = new MySqlCommand(updateQuery, connection);
+                MySqlDataReader reader = myCommand.ExecuteReader();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
+        /* public string readFavCity()
+        {
+            string favcity;
+            
+            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=32f6dFg*;");
+            
+            try
+            {
+                connection.Open();
+                string insertQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
+                MySqlCommand myCommand = new MySqlCommand(insertQuery, connection);
+                MySqlDataReader reader = myCommand.ExecuteReader();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
+            return favcity;
+        } */
     }
 }

@@ -29,7 +29,10 @@
                      
                         <Button Command="{Binding ShowWeatherCommand}">
                                 <materialDesign:PackIcon Kind="Search"/>
-                            </Button>
+                        </Button>
+                        <Button Command="{Binding SetFavoriteCityCommand}">
+                            <materialDesign:PackIcon Kind="Star"/>
+                        </Button>
                          
                         </StackPanel>
                     </Border>

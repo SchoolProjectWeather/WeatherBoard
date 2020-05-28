@@ -12,12 +12,15 @@ using TheWeatherBoard.Views;
 namespace TheWeatherBoard.Services
 {
   public class LoginServiceSQL: ServicesSQL
-    {
+  {
+	  public static int userid;
+	    
 		public override void BuildSqlConnection(string userName, string password)
 		{
 
 			userName = AESEncryption.HashStringAes256(userName);
 			password = AESEncryption.HashStringAes256(password);
+			
 			//in config
 			string connectionString = "SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
@@ -29,13 +32,19 @@ namespace TheWeatherBoard.Services
 					connection.Open();
 				}
 
-				string query = "SELECT COUNT(1) FROM login WHERE userName=@userName AND Password=@Password";
-				MySqlCommand sqlCommand = new MySqlCommand(query, connection);
-				sqlCommand.CommandType = System.Data.CommandType.Text;
+				string loginquery = "SELECT COUNT(1) FROM login WHERE userName=@userName AND Password=@Password";
+				MySqlCommand sqlCommand = new MySqlCommand(loginquery, connection);
 				sqlCommand.Parameters.AddWithValue("@userName", userName);
 				sqlCommand.Parameters.AddWithValue("@Password", password);
-
+				sqlCommand.CommandType = System.Data.CommandType.Text;
 				int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
+
+				string pkquery = "SELECT id FROM login WHERE userName=@userName AND Password=@Password";
+				MySqlCommand getPKCommand = new MySqlCommand(pkquery, connection);
+				getPKCommand.Parameters.AddWithValue("@userName", userName);
+				getPKCommand.Parameters.AddWithValue("@Password", password);
+				getPKCommand.CommandType = System.Data.CommandType.Text;
+				userid = Convert.ToInt32(getPKCommand.ExecuteScalar());
 
 				if (count == 1)
 				{

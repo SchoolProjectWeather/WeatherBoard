@@ -14,8 +14,8 @@ namespace TheWeatherBoard.Services
     public class RegisterServiceSQL : ServicesSQL
     {
         public override void BuildSqlConnection(string username, string password)
-        {
-
+        { 
+           username= AESEncryption.HashStringAes256(username);
            password = AESEncryption.HashStringAes256(password);
 
             MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;");
@@ -37,7 +37,8 @@ namespace TheWeatherBoard.Services
                 if (count >= 1)
                 {
                     MessageBox.Show("Dein Nutzername ist schon vergeben, wähle bitte einen anderen und Versuche es erneut.");
-                } else if (count == 0)
+                }
+                else if (count == 0)
                 {
                     string mySelectQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
                     MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);

@@ -17,22 +17,27 @@ using TheWeatherBoard.Services;
 namespace TheWeatherBoard.ViewModels
 {
   public class MainViewModel: ViewModelBase
-    {
-
+  {
+        public static int city_id;
+      
+        public LoginServiceSQL loginservice;
         public CalcuteConverter calcuteConverter;
         public CurrentWeatherService currentWeatherService;
         public ForecastService forecastService;
         public IconPick iconPick;
         public ButtonCommandBase ShowWeatherCommand { get; private set; }
+        public ButtonCommandBase SetFavoriteCityCommand { get; set; }
         public ObservableCollection<string> CityOutput { get; set; }
         
 
         public MainViewModel()
         {  
+            loginservice = new LoginServiceSQL();
             iconPick = new IconPick();
             calcuteConverter = new CalcuteConverter();
             currentWeatherService = new CurrentWeatherService();
             ShowWeatherCommand = new ButtonCommandBase(ShowWeather);
+            SetFavoriteCityCommand = new ButtonCommandBase(addFavoriteCity);
             forecastService = new ForecastService();
             CityOutput = new ObservableCollection<string>();
         }
@@ -43,6 +48,8 @@ namespace TheWeatherBoard.ViewModels
             CurrentWeatherModel model = new CurrentWeatherModel();
             model= await Task.Run(()=> currentWeatherService.GetCurrentWeather(Location));
 
+            MainViewModel.city_id = model.id;
+            
             Temperature = model.main.temp + " C°";
             Description = model.weather[0].description;
             TempFeelsLike = "Feels Like: " + model.main.feels_like + "C°";
@@ -96,6 +103,18 @@ namespace TheWeatherBoard.ViewModels
             TempMax5 = Convert.ToString(modelForecast.list[36].main.temp_max) + "C°";
 
 
+        }
+
+        private void addFavoriteCity()
+        {
+            try
+            {
+                currentWeatherService.updateFavCity(MainViewModel.city_id, LoginServiceSQL.userid);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
    
 

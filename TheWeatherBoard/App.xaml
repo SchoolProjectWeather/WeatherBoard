@@ -18,7 +18,7 @@
                 <ResourceDictionary Source="StyleDictionaries/ButtonDictionary.xaml"/>
                 <ResourceDictionary Source="StyleDictionaries/ColorDictionary.xaml"/>
                 <ResourceDictionary Source="StyleDictionaries/LabelDictionary.xaml"/>
-                <ResourceDictionary Source="StyleDictionaries/TextBoxDictionary.xaml"/>
+                <ResourceDictionary Source="StyleDictionaries/ComboBoxTemplate.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
 

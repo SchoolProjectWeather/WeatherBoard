@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using TheWeatherBoard.Bases;
+using TheWeatherBoard.Helper;
 using TheWeatherBoard.Services;
 using TheWeatherBoard.Views;
 
@@ -17,6 +18,7 @@ namespace TheWeatherBoard.ViewModels
   public class RegisterScreenViewModel: ViewModelBase
     {
         RegisterServiceSQL registerService = new RegisterServiceSQL();
+        
 
         private string _registerName;
         public string RegisterName
@@ -46,7 +48,7 @@ namespace TheWeatherBoard.ViewModels
             }
         }
 
-        private void Registration(object obj)
+        private async void Registration(object obj)
         {
             PasswordBox pwBox = obj as PasswordBox;
             
@@ -57,19 +59,15 @@ namespace TheWeatherBoard.ViewModels
             
                    try
                    {
-                
-                       registerService.BuildSqlConnection(RegisterName, pwBox.Password);
+
+                    await Task.Run(() => registerService.BuildSqlConnection(RegisterName, pwBox.Password));
                        MessageBox.Show("Erfolgreich registiert!");
-                       LoginScreen loginView = new LoginScreen();
-                       loginView.Show();
-                
-                
-                       var registerScreen = (Application.Current.MainWindow as RegisterScreen);
-                       if (registerScreen != null)
-                       {
-                           registerScreen.Close();
-                       }
-                   }
+
+            
+                    LoginScreen loginView = new LoginScreen();
+                    loginView.Show();
+
+                }
                    catch
                    {
                        throw new ArgumentException("Registrierung fehlgeschlagen!");

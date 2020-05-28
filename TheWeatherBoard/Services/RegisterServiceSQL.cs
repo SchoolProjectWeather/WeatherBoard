@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using TheWeatherBoard.Views;
 
 namespace TheWeatherBoard.Services
 {
@@ -31,7 +33,9 @@ namespace TheWeatherBoard.Services
                 MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);
                 MySqlDataReader Reader = myCommand.ExecuteReader();
             }
-            catch {
+
+            catch
+            {
 
                 throw new ArgumentException("Fehler....");
 

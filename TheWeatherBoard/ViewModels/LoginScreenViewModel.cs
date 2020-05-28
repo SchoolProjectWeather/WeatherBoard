@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,13 @@ namespace TheWeatherBoard.ViewModels
         {
             RegisterScreen registerView = new RegisterScreen();
             registerView.Show();
+
+            var loginScreen = (Application.Current.MainWindow as LoginScreen);
+            if (loginScreen != null)
+            {
+                loginScreen.Close();
+            }
+            
         }
 
         private ICommand _loginCommand;
@@ -54,12 +62,12 @@ namespace TheWeatherBoard.ViewModels
 
         private void Login(object obj)
         {
-
+           
             PasswordBox pwBox = obj as PasswordBox;
 
-            loginService.BuildSqlConnection(Name, pwBox.Password);
+           
+           loginService.BuildSqlConnection(Name, pwBox.Password);
 
-            
         }
 
 
@@ -69,10 +77,10 @@ namespace TheWeatherBoard.ViewModels
             get { return _name; }
             set
             {
-            /*    if (string.IsNullOrWhiteSpace(value))
+                if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Name should not be empty!");
-                } */
+                } 
                 _name = value;
                 OnPropertyChanged();
             }

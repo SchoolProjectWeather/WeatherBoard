@@ -62,42 +62,51 @@ namespace TheWeatherBoard.Services
             throw new System.ArgumentException("Invalid API key.");
         }
         
-        public void updateFavCity(int locationid, int primaryKey)
+        public void updateFavCity(string location, int primaryKey)
         {
-            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=;");
-            
+            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=36f*fSv§sSf-aa;");
+
             try
             {
                 connection.Open();
-                string updateQuery = $"UPDATE login SET city_id = '{locationid}' WHERE id = {primaryKey}";
+                string updateQuery = $"UPDATE login SET city_name = '{location}' WHERE id = {primaryKey}";
                 MySqlCommand myCommand = new MySqlCommand(updateQuery, connection);
                 MySqlDataReader reader = myCommand.ExecuteReader();
+                MessageBox.Show(
+                    "Favoriten Stadt Erfolgreich hinzugefügt! Deine Favoriten Stadt wird beim nächsten Start initialisiert.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
-        /* public string readFavCity()
+        public string readFavCity()
         {
-            string favcity;
+            string favcity = "";
             
-            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=32f6dFg*;");
-            
+            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=36f*fSv§sSf-aa;");
             try
             {
                 connection.Open();
-                string insertQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_id`) VALUES ('{username}','{password}','49593');";
+                string insertQuery = "SELECT city_name FROM login WHERE id = " + LoginServiceSQL.userid.ToString();
                 MySqlCommand myCommand = new MySqlCommand(insertQuery, connection);
-                MySqlDataReader reader = myCommand.ExecuteReader();
+                favcity = myCommand.ExecuteScalar().ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+            finally
+            {
+                connection.Close();
+            }
 
             return favcity;
-        } */
+        }
     }
 }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Jerome\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jerome\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_TheWeatherBoard.-1303415578.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jerome\Desktop\WeatherBoard" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive">
+        <e p="xunit.runner.visualstudio.2.4.1\build\_common\xunit.abstractions.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1\build\_common\xunit.runner.reporters.net452.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1\build\_common\xunit.runner.utility.net452.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1\build\_common\xunit.runner.visualstudio.testadapter.dll" t="Include" />
+      </e>
+      <e p="TheWeatherBoard" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="Assets" t="Include">
+          <e p="01d.png" t="Include" />
+          <e p="02d.png" t="Include" />
+          <e p="03d.png" t="Include" />
+          <e p="04d.png" t="Include" />
+          <e p="09d.png" t="Include" />
+          <e p="10d.png" t="Include" />
+          <e p="11d.png" t="Include" />
+          <e p="13d.png" t="Include" />
+          <e p="50d.png" t="Include" />
+          <e p="logo2.gif" t="Include" />
+          <e p="logo_vorlauefig.png" t="Include" />
+          <e p="logo_without_font.png" t="Include" />
+        </e>
+        <e p="Bases" t="Include">
+          <e p="ButtonCommandBase.cs" t="Include" />
+          <e p="CalcuteConverter.cs" t="Include" />
+          <e p="ViewModelBase.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Classdiagramm.cd" t="Include" />
+        <e p="ErrorHandling" t="Include">
+          <e p="CityNotFoundException.cs" t="Include" />
+          <e p="UnauthorizedAPIConnection.cs" t="Include" />
+        </e>
+        <e p="favicon.ico" t="Include" />
+        <e p="Helper" t="Include">
+          <e p="IconPick.cs" t="Include" />
+          <e p="LocationSql.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="CurrentWeatherModel.cs" t="Include" />
+          <e p="ForecastModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="App.g.cs" t="Include" />
+            <e p="GeneratedInternalTypeHelper.g.cs" t="Include" />
+            <e p="Views" t="Include">
+              <e p="LoginScreen.g.cs" t="Include" />
+              <e p="MainView2.g.cs" t="Include" />
+              <e p="RegisterScreen.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="AESEncryption.cs" t="Include" />
+          <e p="CurrentWeatherService.cs" t="Include" />
+          <e p="ForecastService.cs" t="Include" />
+          <e p="LoginServiceSQL.cs" t="Include" />
+          <e p="RegisterServiceSQL.cs" t="Include" />
+          <e p="ServicesSQL.cs" t="Include" />
+        </e>
+        <e p="StyleDictionaries" t="Include">
+          <e p="ButtonDictionary.xaml" t="Include" />
+          <e p="ColorDictionary.xaml" t="Include" />
+          <e p="ComboBoxTemplate.xaml" t="Include" />
+          <e p="LabelDictionary.xaml" t="Include" />
+          <e p="TextboxDictionary.xaml" t="Include" />
+        </e>
+        <e p="TheWeatherBoard.csproj" t="IncludeRecursive" />
+        <e p="UnitTests" t="Include">
+          <e p="UnitTest.cs" t="Include" />
+        </e>
+        <e p="ViewModels" t="Include">
+          <e p="LoginScreenViewModel.cs" t="Include" />
+          <e p="MainViewModel.cs" t="Include" />
+          <e p="RegisterScreenViewModel.cs" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="LoginScreen.xaml" t="Include" />
+          <e p="LoginScreen.xaml.cs" t="Include" />
+          <e p="MainView2.xaml" t="Include" />
+          <e p="MainView2.xaml.cs" t="Include" />
+          <e p="RegisterScreen.xaml" t="Include" />
+          <e p="RegisterScreen.xaml.cs" t="Include" />
+        </e>
+      </e>
+      <e p="TheWeatherBoard.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

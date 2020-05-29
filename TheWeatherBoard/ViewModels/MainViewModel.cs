@@ -18,7 +18,7 @@ namespace TheWeatherBoard.ViewModels
 {
   public class MainViewModel: ViewModelBase
   {
-        public static int city_id;
+        public static string city_name;
       
         public LoginServiceSQL loginservice;
         public CalcuteConverter calcuteConverter;
@@ -40,6 +40,8 @@ namespace TheWeatherBoard.ViewModels
             SetFavoriteCityCommand = new ButtonCommandBase(addFavoriteCity);
             forecastService = new ForecastService();
             CityOutput = new ObservableCollection<string>();
+            
+            ShowWeatherStartup();
         }
 
         private async void  ShowWeather()
@@ -48,7 +50,7 @@ namespace TheWeatherBoard.ViewModels
             CurrentWeatherModel model = new CurrentWeatherModel();
             model= await Task.Run(()=> currentWeatherService.GetCurrentWeather(Location));
 
-            MainViewModel.city_id = model.id;
+            MainViewModel.city_name = model.name;
             
             Temperature = model.main.temp + " C°";
             Description = "Description: "+ model.weather[0].description;
@@ -104,12 +106,78 @@ namespace TheWeatherBoard.ViewModels
 
 
         }
+        
+        private async void  ShowWeatherStartup()
+        {
+            
+            string favCity = currentWeatherService.readFavCity();
+
+            //CurrentWeather
+            CurrentWeatherModel model = new CurrentWeatherModel();
+            model= await Task.Run(()=> currentWeatherService.GetCurrentWeather(favCity));
+
+            MainViewModel.city_name = model.name;
+            
+            Temperature = model.main.temp + " C°";
+            Description = "Description: "+ model.weather[0].description;
+            TempFeelsLike = "Feels Like: " + model.main.feels_like + "C°";
+            TempMin ="Min Temperature: "+ model.main.temp_min + "C°";
+            TempMax = "Max Temperature: " + model.main.temp_max +  "C°";
+            WindSpeed = "Wind Speed: " + model.wind.speed + "m/s";
+            City = model.name;
+            Sunrise = "sunrise: "+ calcuteConverter.UnixTimeStampConverter(model.sys.sunrise);
+            Sunset = "sunset: "+ calcuteConverter.UnixTimeStampConverter(model.sys.sunset);
+            WeatherIcon= iconPick.pickIcon(model.weather[0].icon);
+
+            //WeatherForecast
+            ForecastModel modelForecast = new ForecastModel();
+            modelForecast = await Task.Run(() => forecastService.GetForecast(favCity));
+            DateTime thisDay = DateTime.Now;
+            string date = thisDay.GetDateTimeFormats('D')[0];
+            Day1 ="Heute";
+            Icon1 = iconPick.pickIcon(modelForecast.list[4].weather[0].icon);
+            Description1 = modelForecast.list[4].weather[0].description;
+            Degree1 = Convert.ToString(modelForecast.list[4].main.temp_min) + "C°";
+            TempMax1 = Convert.ToString(modelForecast.list[4].main.temp_max) + "C°";
+
+            string date2 = thisDay.AddDays(1).GetDateTimeFormats('D')[0];
+            Day2 = date2.Split(',')[0];
+            Icon2 = iconPick.pickIcon(modelForecast.list[12].weather[0].icon);
+            Description2 = modelForecast.list[12].weather[0].description;
+            Degree2 = Convert.ToString(modelForecast.list[12].main.temp_min) + "C°";
+            TempMax2 = Convert.ToString(modelForecast.list[12].main.temp_max) + "C°";
+
+
+            string date3 = thisDay.AddDays(2).GetDateTimeFormats('D')[0];
+            Day3 = date3.Split(',')[0];
+            Icon3 = iconPick.pickIcon(modelForecast.list[20].weather[0].icon);
+            Description3 = modelForecast.list[20].weather[0].description;
+            Degree3 = Convert.ToString(modelForecast.list[20].main.temp_min) + "C°";
+            TempMax3 = Convert.ToString(modelForecast.list[20].main.temp_max) + "C°";
+
+
+            string date4 = thisDay.AddDays(3).GetDateTimeFormats('D')[0];
+            Day4 = date4.Split(',')[0];
+            Icon4 = iconPick.pickIcon(modelForecast.list[28].weather[0].icon);
+            Description4 = modelForecast.list[28].weather[0].description;
+            Degree4 = Convert.ToString(modelForecast.list[28].main.temp_min) + "C°";
+            TempMax4 = Convert.ToString(modelForecast.list[28].main.temp_max) + "C°";
+
+            string date5 = thisDay.AddDays(4).GetDateTimeFormats('D')[0];
+            Day5 = date5.Split(',')[0];
+            Icon5 = iconPick.pickIcon(modelForecast.list[36].weather[0].icon);
+            Description5 = modelForecast.list[36].weather[0].description;
+            Degree5 = Convert.ToString(modelForecast.list[36].main.temp_min) + "C°";
+            TempMax5 = Convert.ToString(modelForecast.list[36].main.temp_max) + "C°";
+
+
+        }
 
         private void addFavoriteCity()
         {
             try
             {
-                currentWeatherService.updateFavCity(MainViewModel.city_id, LoginServiceSQL.userid);
+                currentWeatherService.updateFavCity(MainViewModel.city_name, LoginServiceSQL.userid);
             }
             catch (Exception e)
             {

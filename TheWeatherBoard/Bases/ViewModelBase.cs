@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace TheWeatherBoard.Bases
 {
+    //Die Klasse enthält unser PropertyChanged, was die Basis für unseren MVVM Aufbau ist
     public class ViewModelBase: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

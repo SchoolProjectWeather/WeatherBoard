@@ -43,15 +43,20 @@ namespace TheWeatherBoard.ViewModels
             
             ShowWeatherStartup();
         }
-
+        /// <summary>
+        /// Diese Funktion schreibt alle Wetterdaten in die Properties für die Oberfläche.
+        /// Task läuft asynchron
+        /// </summary>
         private async void  ShowWeather()
         {
             //CurrentWeather
             CurrentWeatherModel model = new CurrentWeatherModel();
+            //Await und LambdaExpression triggert den Service für das jetzige Wetter
             model= await Task.Run(()=> currentWeatherService.GetCurrentWeather(Location));
 
             MainViewModel.city_name = model.name;
-            
+
+            //Modelle werden ausgelesen
             Temperature = model.main.temp + " C°";
             Description = "Description: "+ model.weather[0].description;
             TempFeelsLike = "Feels Like: " + model.main.feels_like + "C°";
@@ -65,7 +70,10 @@ namespace TheWeatherBoard.ViewModels
 
             //WeatherForecast
             ForecastModel modelForecast = new ForecastModel();
+            //Await und LambdaExpression triggert den Service für den Forecast
             modelForecast = await Task.Run(() => forecastService.GetForecast(Location));
+
+            //Modelle werden ausgelesen
             DateTime thisDay = DateTime.Now;
             string date = thisDay.GetDateTimeFormats('D')[0];
             Day1 ="Heute";
@@ -107,9 +115,12 @@ namespace TheWeatherBoard.ViewModels
 
         }
         
+        /// <summary>
+        /// Selbe asynchrone Funktion wie ShowWeather nur das sie beim Starten der App durch Benutzer ausgeführt wird
+        /// </summary>
         private async void  ShowWeatherStartup()
         {
-            
+            //CurrentWeather mit Favoriten Stadt des Nutzers
             string favCity = currentWeatherService.readFavCity();
 
             //CurrentWeather
@@ -186,6 +197,9 @@ namespace TheWeatherBoard.ViewModels
         }
    
 
+        /// <summary>
+        /// Alle Properties für die MainView
+        /// </summary>
         private string _listTemp;
         public string ListTemp
         {
@@ -220,18 +234,14 @@ namespace TheWeatherBoard.ViewModels
             }
             set
             {
-
+                //Reinladen der vorgeschlagenen Städten aus der Datenbank
                 CityOutput.Add(myVerbindung.getLocation(Location, CityOutput));
               
                 _location = value;
                 OnPropertyChanged();
             }
         }
-        public async Task tuetwas()
-        {
-            await Task.Run(() => myVerbindung.getLocation(Location, CityOutput));
-        
-        }
+    
 
         private string _temperature;
         public string Temperature

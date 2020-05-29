@@ -9,6 +9,9 @@ namespace TheWeatherBoard.Bases
    public class CalcuteConverter
     {
         
+        /*Diese Methode ändert den als Unit Time Stamp geliertes sunset und sunrise um in ein DateTime Format, zudem wird der String
+         * noch angepasst, sodass nur die Uhrzeit des sunsets und sunrise angezeigt wird
+         */
 
         public string UnixTimeStampConverter(double timestamp)
         { 

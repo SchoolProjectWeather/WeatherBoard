@@ -7,6 +7,7 @@ using System.Windows.Input;
 
 namespace TheWeatherBoard.Bases
 {
+    //Diese Klasse erbt von ICommand und dient als Basis zum erstellen von Commands
    public class ButtonCommandBase: ICommand
     {
         private Action _execute;

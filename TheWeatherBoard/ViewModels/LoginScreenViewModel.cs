@@ -57,13 +57,16 @@ namespace TheWeatherBoard.ViewModels
             }
             
         }
-
+        /// <summary>
+        /// Hier ein ohne Vererbung erstellter Command, da er einen Parameter der Oberflache bekommt
+        /// </summary>
         private ICommand _loginCommand;
         public ICommand LoginCommand
         {
             get
             {
                 if (_loginCommand == null)
+                    //LambdaExpression
                     _loginCommand = new RelayCommand<object>(i => Login(i));
                 return _loginCommand;
             }
@@ -73,13 +76,13 @@ namespace TheWeatherBoard.ViewModels
         }
 
 
-
+        //Funktion für das Login
         private void Login(object obj)
         {
-           
+           //Passwort der Oberfläche wird hier erstellt da man es aus Sicherheitsgründen nicht binden kann
             PasswordBox pwBox = obj as PasswordBox;
 
-           
+           //Loginservice gefüllt mit Daten der Oberfläche wird abgefeuert:)
            loginService.BuildSqlConnection(Name, pwBox.Password);
 
         }
@@ -90,7 +93,7 @@ namespace TheWeatherBoard.ViewModels
         {
             get { return _name; }
             set
-            {
+            {   //Handling für leeres Textfeld bei Name
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Name should not be empty!");

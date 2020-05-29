@@ -14,7 +14,7 @@ namespace TheWeatherBoard.Helper
     
     public class LocationSql
     {
-       // MainViewModel hallo = new MainViewModel();
+       //Diese Funktion greift auf die Datenbank der Städte zu und passt die in eine Liste hinzugefügten Daten je nach Eingabe on the fly an
         public  string getLocation(string eingabe, ObservableCollection<string>cityOutput)
         {
             string anfang = eingabe + "%";
@@ -22,7 +22,7 @@ namespace TheWeatherBoard.Helper
             if (!String.IsNullOrEmpty(eingabe))
             {
                 try
-                {
+                {   ///SQL-Connection aufbauen
                     MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;");
                     myConnection.Open();
                     //Alle Datensätze aus der DB holen per SQL-Befehl.
@@ -33,7 +33,7 @@ namespace TheWeatherBoard.Helper
                     cityOutput.Clear();
 
                     while (Reader.Read())
-                    {
+                    {  //Hier werden die Werte der Datenbank in eine Observable Collection hinzugefügt
                        cityOutput.Add( Reader.GetValue(0).ToString());  
                     }
                     //Verbindung zur Datenbank wieder abbauen.
@@ -41,6 +41,7 @@ namespace TheWeatherBoard.Helper
                 }
                 catch (Exception ex)
                 {
+                    //Falls es Fehler in der Datenbank / Connection gibt, wird dies per MessageBox ausgegeben
                     MessageBox.Show(ex.Message);
                 }
             }

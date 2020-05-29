@@ -9,9 +9,12 @@ using System.Windows.Media.Imaging;
 
 namespace TheWeatherBoard.Helper
 {
+    //Diese Klasse enthält eine Methode zur Auswahl der richtigen Icons für die MainView
    public class IconPick
     {
-
+        /*Die Mehtode pickIcon bekommt aus dem API-Call eine Icon ID gefiltert, die ID wird in den cases verglichen, falls die ID einem 
+         * case entspricht wird die Source für das passende Icon von den Assets übergeben und als string returned
+         */
         public string pickIcon(string iconId)
         {
             string iconSource="";

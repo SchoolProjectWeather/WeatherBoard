@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TheWeatherBoard.Models
 {
+    /* In dieser Klasse befindet sich das Model (alles Properties), für unseren ForecastService API Service, diese Properties werden im Service alle befüllt
+     * Durh die Speicherung in ein Model lässt sich sauber und ordentlich mit den Daten der API arbeiten
+     */
     public class ForecastModel
     {
         public ForecastModel()

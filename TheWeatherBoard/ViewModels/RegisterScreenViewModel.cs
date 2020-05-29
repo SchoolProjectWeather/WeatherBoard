@@ -49,6 +49,7 @@ namespace TheWeatherBoard.ViewModels
             get
             {
                 if (_registerCommand == null)
+                    //LambdaExpression
                     _registerCommand = new RelayCommand<object>(i => Registration(i));
                 return _registerCommand;
             }
@@ -58,7 +59,10 @@ namespace TheWeatherBoard.ViewModels
 
             }
         }
-
+        /// <summary>
+        /// In der Funktion werden die Eingabe des Benutzers für die Registrierung verarbeitet.(asynchron)
+        /// </summary>
+        /// <param name="obj"></param>
         private async void Registration(object obj)
         {
             PasswordBox pwBox = obj as PasswordBox;
@@ -71,14 +75,14 @@ namespace TheWeatherBoard.ViewModels
             {
                 try
                 {
-
+                    //asnychrone registrieren für eine flüssige Bedienbarkeit der UI
                     await Task.Run(() => registerService.BuildSqlConnection(RegisterName, pwBox.Password));
                     LoginScreen loginView = new LoginScreen();
                     loginView.Show();
 
                 }
                 catch
-                {
+                {   //Errorhandling
                     throw new ArgumentException("Registrierung fehlgeschlagen!");
                 }
 

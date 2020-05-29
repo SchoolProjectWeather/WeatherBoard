@@ -8,10 +8,15 @@ using TheWeatherBoard.Services;
 using Xunit;
 namespace TheWeatherBoard.UnitTests
 {
+    /// <summary>
+    /// Diese Klasse beinhaltet Unti Tests für in der Funktion benannte Funktionen des WeatherDispays
+    /// </summary>
     public class UnitTest
     {
 
-
+        /// <summary>
+        /// Diese Funktion testet ob der currentWeatherService das Model beschreibt und nicht leer zurück gibt
+        /// </summary>
         [Fact]
         public void GetCurrentWeatherTest()
         {
@@ -20,9 +25,12 @@ namespace TheWeatherBoard.UnitTests
             CurrentWeatherModel currentWeatherModel = new CurrentWeatherModel();
             currentWeatherModel = currentWeatherService.GetCurrentWeather(location);
             Assert.NotNull(currentWeatherModel);
+            
         }
 
-
+        /// <summary>
+        /// Diese Funktion testet ob der currentWeatherService das Model beschreibt und nicht leer zurück gibt
+        /// </summary>
         [Fact]
         public void GetCurrentWeatherDescriptionTest()
         {
@@ -34,6 +42,9 @@ namespace TheWeatherBoard.UnitTests
             Assert.NotNull(currentWeatherModel);
         }
 
+        /// <summary>
+        /// Diese Funktion testet ob eine Exception beim CurrentWeatherService geworfen wird, falls man eine Falsche Stadt eingibt
+        /// </summary>
         [Fact]
         public void TestCityNotFoundException()
         {
@@ -43,6 +54,9 @@ namespace TheWeatherBoard.UnitTests
             Assert.Throws<ArgumentException>(() => (currentWeatherService.GetCurrentWeather(location)));
         }
 
+        /// <summary>
+        /// Diese Funktion testet ob der ForecastService das Model beschreibt und nicht leer zurück gibt
+        /// </summary>
         [Fact]
         public void GetForecastTest()
         {
@@ -52,6 +66,10 @@ namespace TheWeatherBoard.UnitTests
             forecastModel = forecastService.GetForecast(location);
             Assert.NotNull(forecastModel);
         }
+
+        /// <summary>
+        /// Diese Funktion testet ob die Verschlüsselung eines String funktioniert
+        /// </summary>
         [Fact]
         public void TestAESEncryption()
         {

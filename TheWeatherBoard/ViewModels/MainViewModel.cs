@@ -177,7 +177,7 @@ namespace TheWeatherBoard.ViewModels
         {
             try
             {
-                currentWeatherService.updateFavCity(MainViewModel.city_name, LoginServiceSQL.userid);
+                currentWeatherService.UpdateFavCity(MainViewModel.city_name, LoginServiceSQL.userid);
             }
             catch (Exception e)
             {

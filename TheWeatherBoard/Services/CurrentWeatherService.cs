@@ -62,9 +62,9 @@ namespace TheWeatherBoard.Services
             throw new System.ArgumentException("Invalid API key.");
         }
         
-        public void updateFavCity(string location, int primaryKey)
+        public void UpdateFavCity(string location, int primaryKey)
         {
-            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=36f*fSv§sSf-aa;");
+            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;");
 
             try
             {
@@ -72,8 +72,7 @@ namespace TheWeatherBoard.Services
                 string updateQuery = $"UPDATE login SET city_name = '{location}' WHERE id = {primaryKey}";
                 MySqlCommand myCommand = new MySqlCommand(updateQuery, connection);
                 MySqlDataReader reader = myCommand.ExecuteReader();
-                MessageBox.Show(
-                    "Favoriten Stadt Erfolgreich hinzugefügt! Deine Favoriten Stadt wird beim nächsten Start initialisiert.");
+                MessageBox.Show("Favoriten Stadt Erfolgreich hinzugefügt! Deine Favoriten Stadt wird beim nächsten Start initialisiert.");
             }
             catch (Exception ex)
             {
@@ -89,7 +88,7 @@ namespace TheWeatherBoard.Services
         {
             string favcity = "";
             
-            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=36f*fSv§sSf-aa;");
+            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;");
             try
             {
                 connection.Open();

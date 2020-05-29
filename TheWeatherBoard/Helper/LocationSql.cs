@@ -23,7 +23,7 @@ namespace TheWeatherBoard.Helper
             {
                 try
                 {
-                    MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=36f*fSv§sSf-aa;");
+                    MySqlConnection myConnection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;");
                     myConnection.Open();
                     //Alle Datensätze aus der DB holen per SQL-Befehl.
                     string mySelectQuery = @"SELECT name FROM  `city` where (name Like '" + anfang + "') ORDER BY name Limit 8";

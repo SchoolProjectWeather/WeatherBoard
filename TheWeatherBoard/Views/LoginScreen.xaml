@@ -1,4 +1,5 @@
 ﻿<Window x:Class="TheWeatherBoard.Views.LoginScreen"
+        x:Name="WeatherBoard_Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -29,7 +30,7 @@
                     <TextBox Margin="15" Text="{Binding Name, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Name"/>
                     <PasswordBox Margin="15" x:Name="pbPassword"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="Password"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="5 50" Content="CANCEL" />
+                        <Button Margin="5 50" Content="CANCEL" Command="{Binding CloseWindowCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=WeatherBoard_Login}"/>
                         <Button Margin="5 50" Content="SIGN IN" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pbPassword, ValidatesOnExceptions=True}"/>
                     </StackPanel>
                     <Button Margin="24,-49,23,0" Content="REGISTRATION" Command="{Binding RegisterCommand}"/>

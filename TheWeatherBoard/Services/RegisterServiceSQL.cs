@@ -36,14 +36,14 @@ namespace TheWeatherBoard.Services
 
                 if (count >= 1)
                 {
-                    MessageBox.Show("Dein Nutzername ist schon vergeben, wähle bitte einen anderen und Versuche es erneut.");
+                    MessageBox.Show("Dein Nutzername ist schon vergeben, wähle bitte einen anderen und Versuche es erneut.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
                 }
                 else if (count == 0)
                 {
                     string mySelectQuery = $@"INSERT INTO `weatherdisplay_db`.`login` (`userName`,`Password`,`city_name`) VALUES ('{username}','{password}','Stuttgart');";
                     MySqlCommand myCommand = new MySqlCommand(mySelectQuery, connection);
                     MySqlDataReader Reader = myCommand.ExecuteReader();
-                    MessageBox.Show("Erfolgreich registiert!");
+                    MessageBox.Show("Erfolgreich registiert!", "Registriert", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
                 }
             }
 

@@ -18,7 +18,7 @@ namespace TheWeatherBoard.Services
            username= AESEncryption.HashStringAes256(username);
            password = AESEncryption.HashStringAes256(password);
 
-            MySqlConnection connection = new MySqlConnection("SERVER=127.0.0.1;Port=3306;DATABASE=weatherdisplay_db;UID=root;Pwd=root;");
+            MySqlConnection connection = new MySqlConnection(ServicesSQL.connectionString);
             connection.Open();
 
             try
